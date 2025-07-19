@@ -14,6 +14,14 @@ import io # Needed for handling the in-memory file download
 import requests
 import base64
 import unicodedata
+from utils.config import (
+    PDF_CACHE_PATH,
+    GITHUB_REPO,
+    GITHUB_PDF_NAME,
+    GITHUB_TOKEN,
+    ENRICHED_CHUNKS_PATH,
+    IMAGE_MAP_PATH,
+)
 def upload_file_to_github(local_path, github_path, commit_message):
     url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{github_path}"
     headers = {"Authorization": f"token {GITHUB_TOKEN}"}
