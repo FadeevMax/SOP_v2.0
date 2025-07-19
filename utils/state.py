@@ -181,11 +181,7 @@ def initialize_session_state():
         st.session_state.instruction_edit_mode = "view"
 
 # ---- Now call it, right after setting user id, and BEFORE any widget ----
-localS = LocalStorage()
-user_id = get_persistent_user_id(localS)
-st.session_state.user_id = user_id
 
-initialize_session_state()
 # --- Functions for User and State Management (No changes here) ---
 def get_persistent_user_id(local_storage: LocalStorage) -> str:
     user_id = local_storage.getItem("user_id")
