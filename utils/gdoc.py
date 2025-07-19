@@ -166,11 +166,15 @@ def sync_gdoc_to_github(force=False):
     # Upload PDF and DOCX to GitHub
     pdf_uploaded = update_pdf_on_github(PDF_CACHE_PATH)
     docx_uploaded = update_docx_on_github(DOCX_LOCAL_PATH)
-    upload_file_to_github(
-    local_path=ENRICHED_CHUNKS_PATH,
-    github_path="enriched_chunks.json",
-    commit_message="Update enriched chunks"
-)
+    # Upload enriched_chunks.json if it exists
+    if os.path.exists(ENRICHED_CHUNKS_PATH):
+        upload_file_to_github(
+            local_path=ENRICHED_CHUNKS_PATH,
+            github_path="enriched_chunks.json",
+            commit_message="Update enriched chunks"
+        )
+    else:
+        st.warning(f"enriched_chunks.json not found at {ENRICHED_CHUNKS_PATH}, skipping upload.")
 
     if pdf_uploaded and docx_uploaded:
         st.success("PDF and DOCX updated on GitHub with the latest from Google Doc!")
