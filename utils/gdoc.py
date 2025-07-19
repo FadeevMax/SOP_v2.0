@@ -3,7 +3,7 @@ from openai import OpenAI
 import time
 import os
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 from streamlit_local_storage import LocalStorage
 import difflib
@@ -15,6 +15,8 @@ import requests
 import base64
 import unicodedata
 from utils.config import GDOC_STATE_PATH, GOOGLE_DOC_NAME, CACHE_DIR, PDF_CACHE_PATH, DOCX_LOCAL_PATH, IMAGE_DIR, IMAGE_MAP_PATH, ENRICHED_CHUNKS_PATH, GITHUB_REPO, GITHUB_TOKEN
+from utils.chunking import extract_images_and_labels_from_docx
+from utils.github import update_pdf_on_github, update_docx_on_github, update_json_on_github, upload_file_to_github
 def download_gdoc_as_docx(doc_id, creds, out_path):
    drive_service = build('drive', 'v3', credentials=creds)
    request = drive_service.files().export_media(fileId=doc_id, mimeType='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
