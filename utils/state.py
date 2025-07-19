@@ -157,6 +157,24 @@ For example, if the SOP has a label "Image 3: . Product split between case and l
 Never paraphrase or summarize image labels.
 Only answers that mention the full caption, exactly, will show the related image to the user.
 """
+
+def initialize_session_state():
+    if "authenticated" not in st.session_state:
+        st.session_state.authenticated = False
+    if "custom_instructions" not in st.session_state:
+        st.session_state.custom_instructions = {"Default": DEFAULT_INSTRUCTIONS}
+    if "current_instruction_name" not in st.session_state:
+        st.session_state.current_instruction_name = "Default"
+    if "instruction_edit_mode" not in st.session_state:
+        st.session_state.instruction_edit_mode = "view"
+    if "model" not in st.session_state:
+        st.session_state.model = "gpt-4o"
+    if "instructions" not in st.session_state:
+        st.session_state.instructions = DEFAULT_INSTRUCTIONS
+    if "assistant_setup_complete" not in st.session_state:
+        st.session_state.assistant_setup_complete = False
+    if "threads" not in st.session_state:
+        st.session_state.threads = []
 # --- Functions for User and State Management (No changes here) ---
 def get_persistent_user_id(local_storage: LocalStorage) -> str:
     user_id = local_storage.getItem("user_id")
