@@ -15,13 +15,20 @@ import requests
 import base64
 import unicodedata
 from utils.config import (
+    CACHE_DIR,
     PDF_CACHE_PATH,
-    GITHUB_REPO,
+    GDOC_STATE_PATH,
     GITHUB_PDF_NAME,
+    GITHUB_REPO,
     GITHUB_TOKEN,
-    ENRICHED_CHUNKS_PATH,
+    GOOGLE_DOC_NAME,
+    STATE_DIR,
+    DOCX_LOCAL_PATH,
+    IMAGE_DIR,
     IMAGE_MAP_PATH,
+    ENRICHED_CHUNKS_PATH,
 )
+
 def upload_file_to_github(local_path, github_path, commit_message):
     url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{github_path}"
     headers = {"Authorization": f"token {GITHUB_TOKEN}"}
