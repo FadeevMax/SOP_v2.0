@@ -1,3 +1,35 @@
+from utils.chunking import (
+    load_or_generate_enriched_chunks,
+    chunk_docx_with_images,
+    enrich_chunks_with_images,
+    extract_images_and_labels_from_docx
+)
+
+from utils.github import (
+    upload_file_to_github,
+    update_docx_on_github,
+    update_pdf_on_github,
+    update_json_on_github,
+    load_map_from_github
+)
+
+from utils.gdoc import (
+    download_gdoc_as_docx,
+    download_gdoc_as_pdf,
+    get_gdoc_last_modified,
+    get_live_sop_pdf_path,
+    get_last_gdoc_synced_time,
+    set_last_gdoc_synced_time,
+    sync_gdoc_to_github
+)
+
+from utils.state import (
+    get_persistent_user_id,
+    get_user_state_filepath,
+    save_app_state,
+    load_app_state
+)
+
 import streamlit as st
 from openai import OpenAI
 import time
