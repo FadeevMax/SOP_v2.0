@@ -1,3 +1,19 @@
+import streamlit as st
+from openai import OpenAI
+import time
+import os
+import uuid
+from datetime import datetime
+import json
+from streamlit_local_storage import LocalStorage
+import difflib
+# Imports for Google Docs API
+from google.oauth2.service_account import Credentials
+from googleapiclient.discovery import build
+import io # Needed for handling the in-memory file download
+import requests
+import base64
+import unicodedata
 def upload_file_to_github(local_path, github_path, commit_message):
     url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{github_path}"
     headers = {"Authorization": f"token {GITHUB_TOKEN}"}
