@@ -1,3 +1,19 @@
+import streamlit as st
+from openai import OpenAI
+import time
+import os
+import uuid
+from datetime import datetime
+import json
+from streamlit_local_storage import LocalStorage
+import difflib
+# Imports for Google Docs API
+from google.oauth2.service_account import Credentials
+from googleapiclient.discovery import build
+import io # Needed for handling the in-memory file download
+import requests
+import base64
+import unicodedata
 def download_gdoc_as_docx(doc_id, creds, out_path):
    drive_service = build('drive', 'v3', credentials=creds)
    request = drive_service.files().export_media(fileId=doc_id, mimeType='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
