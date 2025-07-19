@@ -161,20 +161,31 @@ Only answers that mention the full caption, exactly, will show the related image
 def initialize_session_state():
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
+    if "state_loaded" not in st.session_state:
+        st.session_state.state_loaded = False
     if "custom_instructions" not in st.session_state:
         st.session_state.custom_instructions = {"Default": DEFAULT_INSTRUCTIONS}
     if "current_instruction_name" not in st.session_state:
         st.session_state.current_instruction_name = "Default"
-    if "instruction_edit_mode" not in st.session_state:
-        st.session_state.instruction_edit_mode = "view"
+    if "threads" not in st.session_state:
+        st.session_state.threads = []
     if "model" not in st.session_state:
         st.session_state.model = "gpt-4o"
+    if "file_path" not in st.session_state:
+        st.session_state.file_path = None
     if "instructions" not in st.session_state:
         st.session_state.instructions = DEFAULT_INSTRUCTIONS
     if "assistant_setup_complete" not in st.session_state:
         st.session_state.assistant_setup_complete = False
-    if "threads" not in st.session_state:
-        st.session_state.threads = []
+    if "instruction_edit_mode" not in st.session_state:
+        st.session_state.instruction_edit_mode = "view"
+
+# ---- Now call it, right after setting user id, and BEFORE any widget ----
+localS = LocalStorage()
+user_id = get_persistent_user_id(localS)
+st.session_state.user_id = user_id
+
+initialize_session_state()
 # --- Functions for User and State Management (No changes here) ---
 def get_persistent_user_id(local_storage: LocalStorage) -> str:
     user_id = local_storage.getItem("user_id")
