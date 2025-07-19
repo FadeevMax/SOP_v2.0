@@ -14,6 +14,14 @@ import io # Needed for handling the in-memory file download
 import requests
 import base64
 import unicodedata
+from utils.config import (
+    PDF_CACHE_PATH,
+    GITHUB_REPO,
+    GITHUB_PDF_NAME,
+    GITHUB_TOKEN,
+    ENRICHED_CHUNKS_PATH,
+    IMAGE_MAP_PATH,
+)
 # --- Constants & Configuration ---
 DEFAULT_INSTRUCTIONS = """You are the **AI Sales Order Entry Coordinator**, an expert on Green Thumb Industries (GTI) sales operations. Your sole purpose is to support the human Sales Ops team by providing fast and accurate answers to their questions about order entry rules and procedures.
 
