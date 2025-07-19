@@ -223,5 +223,10 @@ def load_or_generate_enriched_chunks():
 
     return enriched_chunks
 
+def get_file_modified_time(filepath):
+    if os.path.exists(filepath):
+        return datetime.fromtimestamp(os.path.getmtime(filepath))
+    return None
+
 
 
