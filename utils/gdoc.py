@@ -14,6 +14,7 @@ import io # Needed for handling the in-memory file download
 import requests
 import base64
 import unicodedata
+from utils.config import GDOC_STATE_PATH
 def download_gdoc_as_docx(doc_id, creds, out_path):
    drive_service = build('drive', 'v3', credentials=creds)
    request = drive_service.files().export_media(fileId=doc_id, mimeType='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
