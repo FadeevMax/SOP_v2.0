@@ -105,6 +105,44 @@ def set_last_gdoc_synced_time(modified_time):
     with open(GDOC_STATE_PATH, "w") as f:
         json.dump({"last_synced_modified_time": modified_time}, f)
 
+def extract_images_and_labels_from_docx(docx_path, image_output_dir, mapping_output_path, debug=False):
+    # ... (image extraction logic unchanged) ...
+    # Save mapping
+    if debug:
+        print("Final image_map:", image_map)
+    return image_map
+
+def generate_enriched_chunks(docx_path, image_map):
+    """
+    Split DOCX content into semantic chunks and include nearby images.
+    """
+    from docx import Document
+    import re
+    doc = Document(docx_path)
+    chunks = []
+    current_text, current_images = "", []
+    for para in doc.paragraphs:
+        text = para.text.strip()
+        if not text:
+            continue
+        # If this paragraph is an image caption, attach the corresponding image
+        label = extract_label(text)
+        if label and label in image_map:
+            current_images.append(image_map[label])
+            # Optionally include caption text in the chunk text
+            current_text += text + "\n"
+            continue
+        # Start a new chunk at major section breaks (e.g., headings) or if length limit exceeded
+        if re.match(r'^[A-Z].{3,}:$', text) or len(current_text) + len(text) > 1000:
+            if current_text:
+                chunks.append({"text": current_text.strip(), "images": current_images})
+            current_text, current_images = "", []
+        # Add this paragraph to the current chunk
+        current_text += text + "\n"
+    if current_text:
+        chunks.append({"text": current_text.strip(), "images": current_images})
+    return chunks
+
 def sync_gdoc_to_github(force=False):
     # Only check if a day has passed or force=True
     last_synced = get_last_gdoc_synced_time()
@@ -139,20 +177,13 @@ def sync_gdoc_to_github(force=False):
        st.error("Failed to download Google Doc as PDF or DOCX.")
        return False
 
-    # Extract labeled images from DOCX
-    extract_images_and_labels_from_docx(DOCX_LOCAL_PATH, IMAGE_DIR, IMAGE_MAP_PATH, debug=True)
-
-    # Update map.json on GitHub
-    success = update_json_on_github(
-       IMAGE_MAP_PATH,
-       "map.json",
-       "Update map.json from SOP DOCX",
-       GITHUB_REPO,
-       GITHUB_TOKEN
-   )
-    if not success:
-       st.error("❌ Failed to update map.json on GitHub!")
-
+    image_map = extract_images_and_labels_from_docx(DOCX_LOCAL_PATH, IMAGE_DIR, IMAGE_MAP_PATH)
+    enriched_chunks = generate_enriched_chunks(DOCX_LOCAL_PATH, image_map)
+    # Save and upload enriched_chunks.json to GitHub
+    with open(ENRICHED_CHUNKS_PATH, "w") as f:
+        json.dump(enriched_chunks, f, indent=2)
+    upload_file_to_github(local_path=ENRICHED_CHUNKS_PATH, github_path="enriched_chunks.json",
+                           commit_message="Update enriched chunks")
     # Upload images to GitHub
     for file in os.listdir(IMAGE_DIR):
        local_path = os.path.join(IMAGE_DIR, file)

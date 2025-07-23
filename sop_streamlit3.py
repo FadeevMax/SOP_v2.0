@@ -187,14 +187,42 @@ from utils.config import (
 
 from new_functions import load_or_generate_enriched_chunks, process_document_with_semantic_chunking
 
+def enhance_assistant_with_image_context(instructions, img_map):
+    import json, re
+    from utils.config import ENRICHED_CHUNKS_PATH
+    with open(ENRICHED_CHUNKS_PATH, "r") as f:
+        chunks = json.load(f)
+    image_labels = []
+    for chunk in chunks:
+        for fname in chunk.get("images", []):
+            # Find the caption label in the chunk text
+            match = re.search(r'^Image\s+\d+:\s*.*', chunk["text"], re.IGNORECASE)
+            if match:
+                image_labels.append(match.group(0).strip().rstrip("."))
+    image_labels = sorted(set(image_labels))
+    image_list = "\n".join(f"- {lbl}" for lbl in image_labels)
+    enhanced_instructions = instructions + f"""
+---
+# Available Images for Reference
+---
+The following images are available in the SOP document. When answering questions, reference these images by their EXACT labels when relevant:
+
+{image_list}
+
+Remember: Always include the full label exactly as written above...
+This ensures the assistant’s system prompt now uses image labels derived from the enriched chunks metadata (instead of a separate map.json).
+"""
+    return enhanced_instructions
+
+
 def maybe_show_referenced_images(answer_text, img_map, github_repo):
     import streamlit as st
 
     shown = set()
-    for label in img_map.keys():
-        # If the exact label is in the answer text (case-insensitive)
+    # Show images that are referenced by their label in the answer text
+    for label, filename in img_map.items():
         if label.lower() in answer_text.lower() and label not in shown:
-            url = f"https://raw.githubusercontent.com/{github_repo}/main/images/{img_map[label]}"
+            url = f"https://raw.githubusercontent.com/{github_repo}/main/images/{filename}"
             st.image(url, caption=label)
             shown.add(label)
 
@@ -423,6 +451,24 @@ def run_main_app():
 
         st.markdown("---")
 
+        # In the Settings page, remove map.json update button and logic
+        # Replace image list display with enriched_chunks.json logic
+        if os.path.exists(DOCX_LOCAL_PATH):
+            import json, re
+            from utils.config import ENRICHED_CHUNKS_PATH
+            with open(ENRICHED_CHUNKS_PATH, "r") as f:
+                chunks = json.load(f)
+            all_images = {fname for chunk in chunks for fname in chunk.get("images", [])}
+            st.write(f"**Available Images:** {len(all_images)} images loaded")
+            if all_images:
+                with st.expander(f"💡 Available Visual References ({len(all_images)} images)"):
+                    for chunk in chunks:
+                        for fname in chunk.get("images", []):
+                            match = re.search(r'^Image\s+\d+:\s*.*', chunk["text"])
+                            if match:
+                                label = match.group(0).strip().rstrip(".")
+                                st.write(f"• {label} → {fname}")
+
     elif page == "🤖 Chatbot":
        st.title("🤖 GTI SOP Sales Coordinator")
        col1, col2 = st.columns(2)
@@ -565,7 +611,18 @@ def run_main_app():
                        selected_thread_info["messages"][-1]["assistant"] = assistant_reply
                        with st.chat_message("assistant"):
                            st.markdown(assistant_reply)
-                           img_map = load_map_from_github()
+                           import json, re
+                           from utils.config import ENRICHED_CHUNKS_PATH
+                           with open(ENRICHED_CHUNKS_PATH, "r") as f:
+                               chunks = json.load(f)
+                           img_map = {}
+                           for chunk in chunks:
+                               for fname in chunk["images"]:
+                                   # Derive caption label from chunk text
+                                   match = re.search(r'^Image\s+\d+:\s*.*', chunk["text"], re.IGNORECASE)
+                                   if match:
+                                       label = match.group(0).strip().rstrip(".")
+                                       img_map[label] = fname
                            maybe_show_referenced_images(assistant_reply, img_map, GITHUB_REPO)
 
                        save_app_state(st.session_state.user_id)
