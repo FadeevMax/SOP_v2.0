@@ -403,10 +403,10 @@ def initialize_session_state():
         st.session_state.assistant_setup_complete = False
     if "instruction_edit_mode" not in st.session_state:
         st.session_state.instruction_edit_mode = "view"
-
 # ======================================================================
 # --- Main Application Function ---
 # ======================================================================
+
 def run_main_app():
     st.sidebar.title("🔧 Navigation")
     st.sidebar.info(f"User ID: {st.session_state.user_id[:8]}...")
@@ -493,29 +493,28 @@ def run_main_app():
         st.markdown("---")
 
         # Model Selection
-        st.subheader("�� Model Selection")
+        st.subheader("🧠 Model Selection")
         models = ["gpt-4.1", "gpt-4o", "gpt-4o-mini", "gpt-4-turbo"]  # Added gpt-4.1
         current_model = st.session_state.get("model", "gpt-4.1")
-        # Handle case where current model might not be in the new list
         try:
             model_index = models.index(current_model)
         except ValueError:
             model_index = 0
             st.session_state.model = models[0]
-        
+
         new_model = st.selectbox("Choose a model for the chatbot:", models, index=model_index)
         if new_model != current_model:
             st.session_state.model = new_model
-            st.session_state.assistant_setup_complete = False # Force re-setup
+            st.session_state.assistant_setup_complete = False
             st.success(f"✅ Model updated to {new_model}. The assistant will be updated on the next chat.")
 
         st.markdown("---")
-        
+
         # Document Sync
         st.subheader("📄 Document Management")
         st.info("Use the buttons below to manage the SOP document.")
 
-        col1, col2, col3 = st.columns(3)  # Changed to 3 columns
+        col1, col2, col3 = st.columns(3)
 
         with col1:
             if st.button("🔄 Check for Google Doc Updates", help="Checks if the source Google Doc has been updated and downloads it if needed."):
@@ -524,22 +523,22 @@ def run_main_app():
                     if success:
                         st.success("✅ SOP is now up to date!")
                         st.session_state.assistant_setup_complete = False
-                        st.rerun() # Rerun to reflect changes immediately
+                        st.rerun()
                     else:
                         st.error("❌ Update failed. Check logs for details.")
-        
+
         with col2:
             if st.button("🛠️ Re-sync Local Files to GitHub", help="Forces a re-upload of local DOCX, images, and map.json to GitHub."):
                 with st.spinner("Re-syncing local files to GitHub..."):
                     if not os.path.exists(DOCX_LOCAL_PATH):
                         st.error("Local sop.docx not found. Please 'Check for Google Doc Updates' first.")
                     else:
-                        force_resync_to_github() 
+                        force_resync_to_github()
                         st.success("✅ Local files re-synced to GitHub!")
                         st.session_state.assistant_setup_complete = False
                         st.rerun()
 
-        with col3:  # New button for map.json only update
+        with col3:
             if st.button("🗺️ Update Map.json Only", help="Updates only the map.json file on GitHub from local version."):
                 with st.spinner("Updating map.json on GitHub..."):
                     success = update_map_json_only()
@@ -548,14 +547,13 @@ def run_main_app():
                         st.rerun()
 
         st.markdown("---")
-        
+
         # Display local SOP info
         if os.path.exists(DOCX_LOCAL_PATH):
             last_modified_time = os.path.getmtime(DOCX_LOCAL_PATH)
             last_modified_dt = datetime.fromtimestamp(last_modified_time)
             st.write(f"SOP last updated locally: **{last_modified_dt.strftime('%Y-%m-%d %H:%M:%S')}**")
-            
-            # Show available images (expander only in settings)
+
             img_map = load_map_from_github()
             if img_map:
                 st.write(f"**Available Images:** {len(img_map)} images loaded")
@@ -576,122 +574,112 @@ def run_main_app():
         st.markdown("---")
 
     elif page == "🤖 Chatbot":
-       st.title("🤖 GTI SOP Sales Coordinator")
+        st.title("🤖 GTI SOP Sales Coordinator")
 
-       # Load image map for context (do not show any expander or image info here)
-       img_map = load_map_from_github()
+        img_map = load_map_from_github()
 
-       # Simplified assistant setup using OpenAI's vector store
-       if not st.session_state.get('assistant_setup_complete', False):
-           try:
-               # Ensure the source document (DOCX) exists
-               if not os.path.exists(DOCX_LOCAL_PATH):
-                   st.warning("SOP document not found. Please go to the Settings page to sync it from Google Docs.")
-                   st.stop()
-               
-               # In the assistant setup, use the enriched text file for vector store if available, otherwise fall back to DOCX
-               if os.path.exists(SOP_CHUNKS_PATH):
-                   st.session_state.file_path = SOP_CHUNKS_PATH
-               else:
-                   st.session_state.file_path = DOCX_LOCAL_PATH
+        if not st.session_state.get('assistant_setup_complete', False):
+            try:
+                if not os.path.exists(DOCX_LOCAL_PATH):
+                    st.warning("SOP document not found. Please go to the Settings page to sync it from Google Docs.")
+                    st.stop()
 
-               with st.spinner("Setting up the AI assistant with the latest SOP document..."):
-                   client = OpenAI(api_key=st.session_state.api_key)
-                   
-                   # Use a single, persistent thread for the user
-                   if "thread_id" not in st.session_state:
-                       thread = client.beta.threads.create()
-                       st.session_state.thread_id = thread.id
+                if os.path.exists(SOP_CHUNKS_PATH):
+                    st.session_state.file_path = SOP_CHUNKS_PATH
+                else:
+                    st.session_state.file_path = DOCX_LOCAL_PATH
 
-                   # Step 1: Upload the file to OpenAI
-                   file_response = client.files.create(
-                       file=open(st.session_state.file_path, "rb"), 
-                       purpose="assistants"
-                   )
-                   file_id = file_response.id
+                with st.spinner("Setting up the AI assistant with the latest SOP document..."):
+                    client = OpenAI(api_key=st.session_state.api_key)
 
-                   vector_store = get_or_create_vector_store(client)
-                   client.vector_stores.file_batches.create_and_poll(
-                       vector_store_id=vector_store.id, file_ids=[file_id]
-                   )
+                    if "thread_id" not in st.session_state:
+                        thread = client.beta.threads.create()
+                        st.session_state.thread_id = thread.id
 
-                   # Enhanced instructions with image context
-                   enhanced_instructions = enhance_assistant_with_image_context(
-                       st.session_state.get("instructions", DEFAULT_INSTRUCTIONS), 
-                       img_map
-                   )
+                    file_response = client.files.create(
+                        file=open(st.session_state.file_path, "rb"),
+                        purpose="assistants"
+                    )
+                    file_id = file_response.id
 
-                   assistant = client.beta.assistants.create(
-                       name=f"SOP Sales Coordinator - {st.session_state.user_id[:8]}",
-                       instructions=enhanced_instructions,
-                       model=st.session_state.get("model", "gpt-4.1"),
-                       tools=[{"type": "file_search"}],
-                       tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}}
-                   )
-                   st.session_state.assistant_id = assistant.id
-                   st.session_state.assistant_setup_complete = True
-                   st.success("✅ Assistant is ready and using the new vector store!")
+                    vector_store = get_or_create_vector_store(client)
+                    client.vector_stores.file_batches.create_and_poll(
+                        vector_store_id=vector_store.id, file_ids=[file_id]
+                    )
 
-           except Exception as e:
-               st.error(f"❌ Error during assistant setup: {str(e)}")
-               st.stop()
+                    enhanced_instructions = enhance_assistant_with_image_context(
+                        st.session_state.get("instructions", DEFAULT_INSTRUCTIONS),
+                        img_map
+                    )
 
-       client = OpenAI(api_key=st.session_state.api_key)
-       
-       st.subheader("💬 Ask your question about the GTI SOP")
+                    assistant = client.beta.assistants.create(
+                        name=f"SOP Sales Coordinator - {st.session_state.user_id[:8]}",
+                        instructions=enhanced_instructions,
+                        model=st.session_state.get("model", "gpt-4.1"),
+                        tools=[{"type": "file_search"}],
+                        tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}}
+                    )
+                    st.session_state.assistant_id = assistant.id
+                    st.session_state.assistant_setup_complete = True
+                    st.success("✅ Assistant is ready and using the new vector store!")
 
-       # Display existing messages
-       if "messages" not in st.session_state:
-           st.session_state.messages = []
+            except Exception as e:
+                st.error(f"❌ Error during assistant setup: {str(e)}")
+                st.stop()
 
-       for msg in st.session_state.messages:
-           with st.chat_message(msg["role"]):
-               st.markdown(msg["content"])
-               # Also check for images in historical messages
-               if msg["role"] == "assistant":
+        client = OpenAI(api_key=st.session_state.api_key)
+
+        st.subheader("💬 Ask your question about the GTI SOP")
+
+        if "messages" not in st.session_state:
+            st.session_state.messages = []
+
+        for msg in st.session_state.messages:
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
+                if msg["role"] == "assistant":
                     maybe_show_referenced_images(msg["content"], img_map, GITHUB_REPO)
 
-       # Chat input
-       if user_input := st.chat_input("Ask your question here..."):
-           try:
-               st.session_state.messages.append({"role": "user", "content": user_input})
-               with st.chat_message("user"):
-                   st.markdown(user_input)
+        if user_input := st.chat_input("Ask your question here..."):
+            try:
+                st.session_state.messages.append({"role": "user", "content": user_input})
+                with st.chat_message("user"):
+                    st.markdown(user_input)
 
-               client.beta.threads.messages.create(
-                   thread_id=st.session_state.thread_id,
-                   role="user",
-                   content=user_input
-               )
+                client.beta.threads.messages.create(
+                    thread_id=st.session_state.thread_id,
+                    role="user",
+                    content=user_input
+                )
 
-               # Run the assistant and poll for completion
-               with st.spinner("Thinking..."):
-                   run = client.beta.threads.runs.create_and_poll(
-                       thread_id=st.session_state.thread_id,
-                       assistant_id=st.session_state.assistant_id
-                   )
-               if run.status == 'completed':
-                   messages = client.beta.threads.messages.list(thread_id=st.session_state.thread_id, order="desc", limit=1)
-                   assistant_reply = messages.data[0].content[0].text.value
-                   formatted_answer = insert_image_links(assistant_reply)
-                    
-                    # Add the assistant's reply to session state BEFORE rerunning
-                   st.session_state.messages.append({"role": "assistant", "content": formatted_answer})
-                    
-                    # Display the response in a chat message
-                   with st.chat_message("assistant"):
-                       st.markdown(formatted_answer)
-                        # Show images if available
-                       maybe_show_referenced_images(formatted_answer, img_map, GITHUB_REPO)
-                    
-                    # Now it's safe to rerun since the message is saved
+                with st.spinner("Thinking..."):
+                    run = client.beta.threads.runs.create_and_poll(
+                        thread_id=st.session_state.thread_id,
+                        assistant_id=st.session_state.assistant_id
+                    )
+
+                if run.status == 'completed':
+                    messages = client.beta.threads.messages.list(thread_id=st.session_state.thread_id, order="desc", limit=1)
+                    assistant_reply = messages.data[0].content[0].text.value
+                    formatted_answer = insert_image_links(assistant_reply)
+
+                    st.session_state.messages.append({"role": "assistant", "content": formatted_answer})
+
+                    with st.chat_message("assistant"):
+                        st.markdown(formatted_answer)
+                        maybe_show_referenced_images(formatted_answer, img_map, GITHUB_REPO)
+
                     st.rerun()
                 else:
                     st.error(f"❌ The run failed with status: {run.status}")
 
-           except Exception as e:
-               st.error(f"❌ An error occurred while processing your request: {str(e)}")
-               st.session_state.assistant_setup_complete = False
+            except Exception as e:
+                st.error(f"❌ An error occurred while processing your request: {str(e)}")
+                st.session_state.assistant_setup_complete = False
+
+# ======================================================================
+# --- SCRIPT EXECUTION STARTS HERE ---
+# ======================================================================
 
 # ======================================================================
 # --- SCRIPT EXECUTION STARTS HERE ---
