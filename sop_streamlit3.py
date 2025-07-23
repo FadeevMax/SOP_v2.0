@@ -687,8 +687,7 @@ def run_main_app():
                     # Now it's safe to rerun since the message is saved
                     st.rerun()
                 
-               else:
-                    st.error(f"❌ The run failed with status: {run.status}")
+               else: st.error(f"❌ The run failed with status: {run.status}")
 
            except Exception as e:
                st.error(f"❌ An error occurred while processing your request: {str(e)}")
