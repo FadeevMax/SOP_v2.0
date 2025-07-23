@@ -1,0 +1,582 @@
+FORMAT: Almost all orders are coming in the menu format.
+DISCOUNTS: They have different discounts (volume tiered flower discounts, 20 off Incredibles, inventory reduction tab, etc). If it is something out of that, it will be communicated in the menu or email. They usually create the promo prices on Monday, and those rules are created in LT within a maximum of 24 hours. That is the gap when prices on the menu are not reflected in LT, and we have to adjust them manually.
+PRIORITY ORDERS: Rise is having priority over regular orders (if they come late Wed, early Thu). They hold with regular orders until the rise is in.
+There are 5 rise stores: Cleveland, Detroit, Madison, Lorain and Toledo.
+It is split by delivery dates but inputted at the same time.
+Comes on Thursday AM - they punch them for delivery next week
+PRICING: For rise orders, we follow the MENU pricing. Menu prices should be the same as LT prices; if not, follow the menu price and make a note.
+DISCOUNT: They have special discounts for some SKUs. They provide this info in the body of the email when they send a rise. Usually, these discounts are already included in the menu and LT, however we can always double-check.
+Image 1. Special discounts they are running
+ORDER PLACING: We start with Monday’s orders for all stores, then move on to Tuesday’s, Wednesday’s, and so on. After completing Monday and Tuesday, we inform them via Teams that we’re done. The same goes after Wednesday and Thursday, and lastly for Friday.
+
+ORDER CHECK: On the order sheet, we have the total unit count and total dollar amount, which we must refer to when checking the order at the end.
+Image 2. Total dollar and unit amount per store/day
+BATCH SUB: If the requested batch is OOS, we search for the product by name. If we have multiple batches available, we need to follow the same process as for regular orders and make sure we are choosing the oldest batch available (always make a note - example below).
+LESS AVAILABILITY: If there are fewer available units than requested, and there is no other batch available, we add as much as we have. If we have a request for 25 units, and there are only 20 units available, we pick 25 units from a different batch. If there is no other batch available, we pick these 20 units and make a note (example below).
+INVOICES: There is no need to send the invoices (but we should save them for our records)
+DELIVERY DATE: Once we place the orders, we need to add delivery dates (they are for the following week).
+Image 3. Delivery date set up
+Image 4. A place to check if the order is dated
+No available item: 0/25 Gelato Punch Cookies Pre-Pack (Popcorn) 2.83g - Good Green (Hybrid)
+
+Less available item: 16/20 Brownie Scout Cartridge 850mg - Rythm (Indica Dominant)
+Pull SUB: Incredibles Gummy 120mg - Blueberry Dream - requested 1A40703000027D9000009245 (OOS) - batch 1A40703000027D9000037408 added to the order instead
+Different pricing: Jack Herer Pre-Pack (Buds) 2.83g (1A40703000027D9000008016) - Rythm (Sativa Dominant) - $10 per unit in the menu, $3 per unit in LT - Corrected the price to $10 in LT
+PRICING: We always follow MENU PRICING (ACTUAL PRICE) - in case the formula is not pulling correctly, and we see that the price should be discounted according to the number of units, address that in the email or via Teams.
+SPECIAL PRICING: Sometimes promotions are not reflected in the menu pricing; however, you can find more information at the top of the menu. In such cases, we should manually adjust the price and make a note about it (e.g., for Beboe gummies $10).
+Image 1. Actual price column
+Image 2. Special deals
+PRICE CHANGE WHEN ITEM IS OOS: Since pricing depends on the number of products ordered, if some items are out of stock and the order no longer qualifies for the lower price tier, we should apply the higher price and inform the reps when sending the invoice. Explanation:
+Image 3. Bucket price change
+BATCH/PULL NOT AVAILABLE: In case the requested batch is not available, GO TO - Inventory/Pricing - Search the product by name - check expiration date first. If multiple batches have the same exp date, the second step would be to search for the lowest pull no (last 4 digits / in case there are 0000, then it might be 5 digits)
+Image 4. Process of checking which batch should be used for sub (Inventory/Pricing)
+Image 4. Search by product name (ex., Animal face)
+Image 5 . 1st step - Checking the expiration date column
+Image 6. 2nd step - Checking the smallest pull number
+Notes example: Pull sub: Black Afghan Pen 2000mg - Rythm (Indica Dominant) - requested 1A40703000027D9000051097, we used 1A40703000027D9000061554
+LESS AVAILABLE UNITS FROM REQUESTED BATCH: If we have a request for 25 units, and there are only 20 units available, we pick 25 units from a different batch. If there is no other batch available, we will pick these 20 units and send a note via email
+SUBS - If the batch is not available, we substitute with a different batch number according to the rules. If the other batch is not available, we don't substitute with different products; we just advise the rep in the email about OOS
+BATTERIES: Batteries are going on a separate invoice
+OFF-SPEC PRODUCTS: If we notice that the product has an Off spec in the batch name, we should avoid adding it to the regular orders. We use these only for RISE stores.
+Image 7. OFF SPEC products
+If we have a situation where there is a request for 15 units of Good Green 28.3g - we should add 10 or 20 units and add that info in the email (because of the case size)
+CASE SIZE EXCEPTION: Only in the case of fewer available units (with no other batch to substitute), we can break the case. For example, if there are only 14 units left of Good Green 28.3g and we have a request for 20, we will not pull 10 (1 case), but we will pull all 14 and close that batch, notifying them in the email.
+ORDER CHECK: In the first tab, we have the summary where we can check if everything is correct after we are done with the order.
+Image 7. 2nd step - Order summary
+
+MONTH SPECIALS: Every month, they are running promos on some SKUs. Some are reflected in the menu, some are not. We should always pay attention to that.
+Image 8. Month specials
+Firelands Scientifics dispensary, The Landing in Cinci - should be placed in LT under “The Landing - Cinci”, NOT 'Firelands Scientifics.
+Huron location is the only one titled 'Firelands Scientific' while their Monroe, Cincinnati, Columbus, and Cleveland locations are titled 'The Landing'.
+Manny Jayaratne (Sales Manager) - mjayaratne@gtigrows.com - our POC
+
+Orders: 70% of the orders come from the Menu / 30% loose email orders
+
+Preferred communication channel: Email, Teams, Call
+Order Limit: Order limit is 5000 units for Hagerstwon, Joppa and Silver Spring. For Bethesda, it is 1000 units.
+Rise for flowers is placed differently from the rise for other products.
+
+We usually receive flowers on Mon/Tue in a simple order form (we might receive pre-rolls and other products in the same form).
+Image 1. Order form example
+Rise for other products is received in the regular multi-tab menu format on a different day of the week.
+Image 2. Order menu form example
+ORDERS: We create separate RISE orders for each store and product type (e.g., one for Pre-Rolls, one for Concentrates,etc). Exceptions:
+Edibles and Medical gummies can go on the same one (tinctures and balms as well)
+Vapes need to be on separate orders (One for Rythm, one for &Shine + Beboe)
+PRICING: We should follow the LT pricing. It should have been automatically 20% off - always make sure that the LT price is a discounted menu price!
+BATCH: For most products, there is only one batch available. However, if two or more batches are available, we follow the THC% request. If not available, we prioritize older products first (FIFO), based on the earliest lab result date.
+LESS AVAILABLE ITEM: If we have less available units than requested, we add what we have-as long as it's 9 units or more.
+
+For example, if the request is for 25 units and we have 11 available, we will add the 11 and make a note. However, if only 6 units are available, we will not fulfill the request - just mark the product as OOS
+SPLITTING THE PRODUCT: For orders exceeding 300 units of a single product (for example, 16 cases of Animal Face 3.5g), both product size types (cases and loose units) will be used. If a case size is 25 units, a request for 400 units will require 16 cases. We will usually allocate 8 cases + 200 loose units to fulfill the request, two lines. However, we can split the other way if needed, ex. Below
+Image 3. Product split between case and loose units (for requested 300+ units)
+BATCH SPLIT: We can split the batch a maximum of two times in one order if needed (use 2 batches of the same product). We do this in order to close the open batch.
+Example 1: If there is a batch with 50 units left and a batch with 500 units available, and we have a request for 4 cases, we will pull 2 cases from the smaller batch and 2 from the larger.
+Example 2: If there is a batch with 12 units left and we have a request for 50 units (2 cases), we will add those 12 loose units to close the batch, and take the remaining 38 loose units from the second available batch.
+PRIORITY: The store that orders the highest number of units receives priority. Typically, this is Hagerstown!
+SKU LIMITS: We generally follow the maximum SKU number a store can accept (ex., Hagerstown 6000 units). However, if the store orders more, we can still process the order and verify with Manny whether it is acceptable or needs to be adjusted. This usually doesn’t happen - This is usually not happening.
+INVOICES: We need to download the invoices and send them together with the notes.
+
+Invoice format: Store name_Product_X
+Image 4. Invoice format
+NOTES: We need to send notes about OOS items, less available products, batch split (if we used two), and price discrepancies (LT vs Menu).
+Image 5. Notes example
+The tracker is populated once orders are submitted. It tracks how many units of each SKU category have been allocated to each store - TRACKER - Usually we are not doing this
+RISE Flower Hold: They will send us the order number where they are holding the flowers for rise. They will also send us the flower split. Example:
+Image 6. Flower hold sheet
+The order where they are holding the units will usually be under the Hagerstown location. Once we find that order in LT, we need to create a new order for Hagerstown, and later for Joppa, SS, and Bethesda. The biggest difference between Rise for Flowers and for other products is that the flowers are saved in advance, and we are moving products to our orders instead of searching for them. So we need to move the SKUs from the main order to the separate orders we created!
+We open LT in two tabs. In one, we are keeping the main order; in the other, the order that we are building. The order from which we are moving the items doesn’t have to be in add/edit-just open it by clicking on the order number. Once you are ready, you move the items by clicking the three dots on the side, and you choose how many units you want to move (the number is always by item, even if the product is in case size) (e.g., moving 2 cases, you will type 50 units). When you transfer, it will show "2 cases," so no worries. Once you move, refresh the page of the new order and you will see the products. The good thing is, if you make a mistake, you can always transfer the units back to the main order. When you transfer all requested units, you save your new order and download the invoice. Since the main order is not in the add/edit mode, you don’t have to save or anything.
+Image 7. Moving the items step 1
+Image 8. Moving the items step 2
+The problem arises when we have a request for more than 300 units of one product, as we need both the case and loose size items on the main order, which is usually not the case. Here’s how we handle it: We remove the product from the main order and click save (ALWAYS make a note about the product name, batch, and quantity-so you know what to pull back). Then, we wait for a few minutes before searching for the product again. Once the product is visible, we pull it back into the order, with half the quantity in the case and half in the loose size.
+
+If there is no loose size or case size still available, we need to ask Maneth for help. Sometimes he will agree to go with (350, 400 units), but sometimes he will create those for us.
+We can split the batch a maximum of two times in the order (sometimes you will not have enough units in one batch, so you will use two. That is fine-just make sure to split only two times).
+Usually, the requested number of units is not the same as what is available. Example: request for 2 cases, and there are only 46 units left. That is fine-add as much as you can. Usually, the last store is the one receiving more or less than requested.
+Not enough units: If we have a request for, for example, 395 units across 4 stores (100 each), we will allocate 95 units to one of the stores, usually the last or second-to-last one. If we have more examples like this, we try to divide them between the stores so that not only one store receives these partials.
+Notes example
+Image 9. Notes for flowers
+
+MENU: Typically, we receive the order request in the menu form
+Image 1: Menu form
+FLOWER PAGE: We should always confirm whether we should add the flower page. Typically, they offer discounts (10%, 15%) with most retailers, and those discounts are usually already in LT.
+DISCOUNT: They offer different pricing options. The general document is called
+GTI MD PRODUCT PRICING: There we can find all the retailers who are getting a discount on flowers, vapes or dog walkers products. We should apply prices accordingly. If the retailer is on the Dank Vape discount list and is marked in green, we should follow the prices from the “J” column for vapes. If it is there but not marked in green, we should follow the prices from the “F” column.
+Image 2: MD NEW BASE PRICING 2025 document ́{-.ñpñ{-.lp’o01 jnbvc
+TERRITORY DOCUMENTS: There are 3 territory documents:
+
+In each file, we can find special pricing and retailer preferences for their accounts.
+Check the retailer in the territory files to see their preferences and special prices.
+Check if the retailer is receiving any of the discounts (flowers, vapes, or walkers) in the GTI MD PRODUCT PRICING doc
+LOOSE UNITS: We can always add loose units if a case is not available. For Western and Moco accounts, we should prioritize loose units.
+LESS AVAILABLE ITEMS: If we have limited inventory, we can still add items, as long as at least 9 units are available. For instance, if there’s a request for 25 units and we have 11, we should add them. However, if only 8 are available, we should mark the item as OOS (out of stock).
+SPLITTING THE PRODUCT: For orders exceeding 300 units of a single product (for example, 16 cases of Animal Face 3.5g), both product size types (cases and loose units) will be used. If a case size is 25 units, a request for 400 units will require cases. We will usually allocate 8 cases + 200 loose units to fulfill the request, two lines.
+BATCH: For most products, there is only one batch available. However, if two or more batches are available, we follow the THC% request. If not available, we prioritize older products first (FIFO), based on the earliest lab result date. We don’t sub for a different product.
+THC%: If the discrepancy is not within the same 10% range (e.g., ordered 50% - 41% available, or ordered 42% - 35% available), always make a note.
+BATTERIES: If there is a request for batteries, we can add them to the same invoice as our products, but we should make a note about it.
+REC VS MED - They don't have MED or REC locations. They only use one location.
+SAMPLES: We typically do not receive requests for samples. However, if a request is made, we must confirm whether the samples should be added to the existing sales order or if a separate order should be created. Samples are always priced at $0.01.
+MANA ORDERS: Always create two invoices: one for flower and prerolls, and another for the remaining products.
+VERILIFE ORDERS: For Verilife stores, we should always offer substitution from the same lean (Sativa, Indica, Hybrid).
+LOCATION: Do not place orders under Grow Facility’s locations. Example: Requested order for District Cannabis Hagerstown- Retail and in LT options are: The correct location in this case is the District Cannabis MD - MCP Retail LLC one.
+Jeff Mangold is our POC for MD, NJ, for day-to-day things
+6 Months EXP date on SKUs in NJ (related to batches)
+We receive orders on different days throughout the week. Usually RISE orders for vapes, edibles on Thursday and RISE orders for Flower and Preroll are on Friday.
+There are five shipping locations: Bloomfield REC1, Bloomfield MED, Paterson REC1, Paterson MED, and Paramus.
+We should receive the Rise order sheet and Max Unit count via Teams. Please request access if you don’t have it!
+Image 1. Rise Order Sheet and MaxUnit tracker
+
+MENU: We are receiving the menu and requested unit counts in a different format compared to other states.
+Image 2. Rise Menu
+In the sheet on the right, we’ll see the requested number of cases. Based on availability, we should mark the cells as follows:
+Yellow - Limited availability, added to the order (e.g., 4 > 1 means 4 cases requested, 1 case added)
+PRICING: We should follow the menu pricing. No need to create the notes, just advise them that we used menu pricing.
+SAMPLE UNITS PRICING: If there is a product priced $1, that is the sample product. We don’t add those to the rise orders. In that case, please mark the item as OOS (red) and make a note.
+BATCH: We should search for the product by name and select the available batch. In 80% of cases, only one batch will be available. If there are multiple options, please select the batch indicated on the right. If no batch is indicated, follow the THC% request. If that is not available as well, choose the batch according to FIFO.
+Image 3. Requested Batch
+DATE: We are adding dates to the orders. They should advise us on this.
+Image 4. Setting a delivery date
+UNITS TOTAL: The maximum total per order is 4,000 units. If there are more than 4,000 items, the order must be split. The second order will be scheduled for the next day.
+UNITS TOTAL PER DAY: There’s a daily limit of 4,000 units per store. For example, if we have an order for 1,500 units of edibles, another for 200 units of concentrates, and a third for 1,000 units of prerolls (that totals 2,700 units), that means we have 1,300 units of available space left for that delivery date. We should follow these daily limits whenever instructed to do so.
+INVOICES: There is no need to send the invoices (we can save them for our records). Ideally, also include the unit count and delivery date. Notes example: Rise New Jersey - Bloomfield - REC #979802 - 3575 units - Tue delivery
+NOTES: There’s no need to include notes about out-of-stock (OOS) or limited-availability items, as these are already marked in their Rise menu. Since we are following menu pricing, there is no need to send those.
+Image 5. Shipping location / order no / delivery date / no of units
+BATCH SPLIT: We don’t do batch split (2 batches of the same product) if not necessary. If that is the only option, we can do it.
+LOOSE UNITS: We don’t add loose units to the rise orders (they keep those for regular orders)
+BATTERIES: Batteries must go on a separate invoice.
+PRODUCT LIMITS & SPLITTING ORDERS: In NJ, we need to follow product limits per invoice. If a request exceeds the allowed quantity, the order must be split into multiple invoices.
+All other products/categories: 250 units (10 cases)
+If we receive a request for more than the allowed quantity (e.g., 13 cases), split the product into two orders - for example, enter 6 cases on one invoice and 7 on the second.
+RESERVED UNITS: Sometimes, units are reserved on different orders for Rise. A yellow note on the side will confirm this. In such cases, we need to move units from that order to our Rise order.
+Before moving any units, take a screenshot of the order to capture how many items of each product were originally there (one person in charge)
+After completing the orders for one product type (eg. Prerolls), take another screenshot and send it along with the notes (same person in charge)
+Process of moving the units (there is a video tutorial in the teams group):
+Open the order where the units are reserved (click Add/Edit).
+
+Open the order you’re working on (click Add/Edit).
+In the order you're working on, select "Variant stock", and from the drop-down menu, choose the dotted line.
+Copy the batch number of the product from the order where it’s reserved, then search for it in the order you're working on (the product should appear).
+Go back to the order where the product is reserved and remove the units you need (e.g., if there are 12 cases and you need 5, change the quantity to 7 and save the order).
+Once that order is saved, you’ll be able to pull those 5 cases into your order. Simply enter the quantity as 5 and save
+Image 6. Variant Stock
+Image 7. Yellow note about reserved items
+They have a special unit tracker that we should populate after placing the orders. After the orders are submitted and the delivery date is set, we can work on it.
+We should mark the cells this way.
+Image 8. Tracker coloring
+Image 9. Tracker coloring
+We are adding unit count to the product sheet (flower / preroll / edibles..) and to the delivery date sheet (Mon / Tue / Wed...)
+Always make sure - MAX UNIT COUNT PER DAY IS 4K PER STORE
+MENU FORMAT: Most orders (approximately 95%) come through the Menu format. They are actively training buyers to order via Menu.
+PRICING: We always follow menu pricing. In most cases, menu prices will be lower than those listed in LT. The only exception is when the LT price is lower than the menu price-in that case, we use the LT price and make a note.
+SUBS: Since batch numbers are not listed in their menus, we fulfill orders based on the requested THC percentage (it should be the oldest batch available). If the requested THC level is out of stock, we follow FIFO. We do not make substitutions for other products.
+REC vs. MED: We usually prioritize REC over MED orders. However, always confirm this with the reps.
+
+LESS AVAILABLE UNITS: If we receive a request for 2 cases and only 1 case is available, we can fulfill the 1 case and make a note.
+LOOSE UNITS: We do not use loose units for regular or RISE orders. Only if partial cases are requested, loose units can be used.
+BATTERIES: Batteries must go on a separate invoice.
+CASE SIZE: Always ensure the case size from the menu matches the one selected in LT. Discrepancies are common. If there is a difference, make a note and adjust pricing accordingly based on the case size.
+INTERNAL NOTES: For New Jersey (NJ) orders only, internal notes must be added in LT (Internal Notes).
+Image 1. Internal notes example
+SAMPLE PRODUCTS: If a product is priced at $1, it is considered a sample. These items should not be added to RISE orders. Instead, mark the item as OOS (red) and make a note.
+ORDER CHECK: At the top of every tab, there is a total summary. Always refer to it when placing an order. Note: Sometimes the summary formulas are incorrect and do not include all cells, which can cause discrepancies in order totals. If this happens, make a note.
+DISCOUNT: Discounts are listed on the menu. Any additional discounts are communicated via email.
+ORDER SPLIT: If an order has more than 50 line items, it must be split accordingly. Example: A RISE order with 150 lines should be split into 3 orders of 50 lines each.
+SAMPLE ORDER: If a request for samples is received (rare), they should be placed as a new order.
+TWO MENU FORMATS: If an NJ order email includes two Excel menus for the same store, combine them into one order in LT.
+NOTES FORMAT: Always follow this format for notes: 0/30 Animal Face 3.5g Rythm 25/50 Brownie Scout 7g Rythm
+Cuttoff for order placement is during the time we punch in RISE orders (RISE orders usually come as early as 10 AM and as late as 3 PM)
+No special order prioritization-FIFO rules-unless its a brand new store, but the rep will specify it.
+STORES: There are 10 Rise stores (Canton, Charleston, Effingham, Joliet Colorado, Joliet Rock, Lake in the hills, Mundelein, Naperville, Niles, Quincy)
+ORDER SPLIT: If the order is above 150k or has more than 8k units, you need to split the order equally.
+BATCH SUB: We always use the batch provided in the menu. If it is OOS we can sub the batch following FIFO and make the note (try to stay within the same THC% tens - eg. 30%, 40% for flowers and prerolls).. If the item is totally OOS, we make a note as well (We do not substitute with different flavours of the same item).
+PRICING: We follow the LT pricing - if not instructed to follow the menu.
+DISCOUNT: RISE orders do not succumb to any discounts
+ORDER CHECK: Make sure to double-check the requested number of units and the total number of units in the order (see if they match, including your notes)
+There might be a second tab on the menu - please check if we should enter those units as well - should be advised in the rise email.
+LOOSE UNITS: We ADD LOOSE UNITS ONLY if that is the last batch (units available)
+CASE SIZE: Case sizes might differ from time to time; make sure to double-check. (They might request a case of 30, but only cases of 25 are available; you can freely add those and make notes about them.)
+LESS AVAILABLE: If we have for example, 2 available cases out of 4 requested (and there is no other batch available) we add those 2 and make a note. If there are 2 cases available, but there is another batch, we pull these 2 cases from the requested batch, and add 2 cases from another batch. Always make a note about it!
+NOTES FORMAT: (please put No available notes on top)
+No available item: 0/30 3.5g Afternoon Delight #4 (Hybrid) Rythm Flower
+Less available item: 30/60 Afternoon Delight #4 (Hybrid) Rythm Flower
+Batch SUB: Blue Dream Cartridge (NCD) 500mg - andShine (Hybrid), batch 0411 7409 2531 6188 not available sub with 7221 1359 3488 3442
+Wrong price: A la mode Cartridge (Live Resin) 500mg - Rythm (Hybrid) - LT price of $600 has been changed to the menu price of $312.50
+MENU: Typically, we receive the order request in the menu form
+Image 1: Menu form
+
+REC VS MED: Please ALWAYS select MED if that's the option
+DISCOUNTS: Most discounts (e.g., 20%, 30%) are already set up in Leaftrade.
+However, there are times when we’re asked to apply a discount that isn’t pre-configured in LT.
+If the discount shown in LT matches what they requested via email, proceed with it and simply include a note with the invoice-for example, “20% discount applied.”
+If the discount in LT is greater than what was requested (e.g., they asked for 20%, but LT shows 30%), confirm with the rep.
+If the discount in LT is lower than what was requested (e.g., LT shows 20%, but the rep requested 30%), confirm in the discount doc and with Valerie.
+When checking the discount, the best approach is to create a new column with a manual pricing formula - for example: unit price × 0.8 × case size
+Additionally, some SKUs may be on promotion, listed in the "Promo price" column. These promo prices may or may not be reflected in LT, so always double-check and apply manually if needed.
+Image 2: Promo price colum
+BATCH SUB - THC% PRIORITY: For flowers and pre-rolls, we prioritize the THC percentage. If the batch with the requested THC% is out of stock, we should make a batch substitution, aiming to stay within the same 10% range (e.g., 20s, 30s, etc.).
+BATCH SUB - FIFO PRIORITY: For all other products (excluding flower and pre-rolls), if the requested batch is out of stock, we make a batch substitution following FIFO.
+BATTERIES: Batteries must go on a separate invoice.
+LOOSE UNITS: We add loose units only if that is the last batch available or if a partial case is requested. We never split a loose unit's batch.
+For example, if a retailer asks for a partial case and there are two batches - one with 20 units and another with 8 units - we should add either all 20 or all 8 units. We should never take 15 units out of the batch of 20. There is no minimum limit; we can add batch with 2 or 3 units as well.
+Image 3: Loose units rule
+LESS AVAILABLE UNITS: If we receive a request for 2 cases and only 1 case is available, we can fulfill the 1 case and make a note.
+SAMPLES: Samples are placed inside orders not separate from the order but the price rule applies the same ($0.01 per unit)
+ORDER CHECK: The order total (in dollars) at the top of the menu is often not accurate, so we verify order accuracy by checking the total number of units instead.
+We calculate the total units listed in the menu and compare them with the unit total entered in the order to ensure they match.
+If any items are out of stock, please mark that cell on the excel file in red and send the excel sheet back with the invoices
+Mission South Shore - LT: Mission Illinois - South Chicago - REC / MED
+
+Viola The Village - LT: Viola IL - Broadview - REC
+
+Communication preference: immediate attention - Teams, second comm form - email, super important - call
+
+Orange county cannabis - key account, Sour Diesel Rhythm 1/8ths, 1/4ths are a favorite and they will scoop up. New strains - put cases aside for them (1/8th). They have a bud bar so they send a single unit for them (sample). Chantelle is the buyer and will text or email for a refresh in the bud bar. Good to order 1 order a month if not 2.
+Stage 1 - dropped off the map a little, and they are a bit off and on with ordering. He will meet with the buyer and go over the store with them. Brownie Scout, Sour Diesel, not open to new strains, White Durban (high testing- over 25%). New strains that are higher testing, they are open to it. Not open to subs typically. Backup batch is fine as long as the THC is close. Was ordering every week, but when strains are not available, they fell off the schedule.
+Capital District Cannabis in Albany - sends the menu over usually. 1-2 times a month order.
+Elevate - key account in terms of bandwidth, a while since they ordered, consistent with DW multipks. THey buy everything. Brownie Scout, Sour Diesel - anything above 22%. Big on infused DW.
+Silver Therapeutics (Silver Cannabis Company) - fairly new, they have stores in MA as well. Rythm 8ths, DW multipck, Beboe vapes and gummies.
+THC Herbal vault - tricky in terms of ordering. A lot of times they send orders to the Accounting email, the order gets forwarded to Frankie.
+He will send accounts that have Bud Bars for sampling.
+On orders 10k or more, they include samples. About 10% of order (in units).
+Invoice naming convention - make sure to put Mock invoice (Account - Mock order - date)
+NY team oversees some MED accounts - Columbia Care, Veralife, Verio - all of them are open to subs and revisions
+Veralife MED, they don’t require $5k minimum on all stores. As long as the order AVG is around 5k it will be fine.
+Travel Agency - High priority, 3 locations. Pretty big weekly orders, not specific, but prioritize them if there is only 500 of a sku left.
+Housingworks - into Rythm, when a new sku is dropping they will order, they put in regular bi-weekly orders. But if a new product drops they will order that. When under 5k minimum, they were able to add a couple of SKUs.
+Happy Days - biggest spender in Long Island, they reach out to Lincoln but Douglas is cc’d. They get a menu a couple of days early and might ask to put some Skus aside.
+Happy Monkey - soft opening on Saturday but have been labeled as priority. Just submitted their 1st order.
+Most of the orders are on the template - 3 or 4 accounts text or call and have him do the order live over the phone. Now they are moved over to email. 90% are on the template.
+Average unit count for higher spenders is about 25000+ in $ value as for units it depends.
+For higher end orders they sometimes give discounts or samples - or have promos on the menu.
+
+Communication method preference - text msg or a call if we need to reach immediately, doesn’t like email (Outlook specifically), teams works great as well.
+Naming convention preference - open to anything, using the invoices directly off Leaf Trade.
+SUBs - high priority accounts accept subs. If it’s too many subs they might ask for a live menu and change the order. It depends on the retailer so he can text them.
+Order heavy - Wed-Fri. Mondays can be sometimes. Wed-Thu is busiest and Fri-Mon is less busy but something happens.
+Spends about 7-10 orders (Travel Agency can take about 30 mins to do). 3-4 hours. From submission to approval takes about 4 hours on busy days.
+Nelson Rise stores: priority by $ amount as the other reps
+As for SUBs, just leave it out of the order and note what was missing
+
+Communication preference: email is good for visibility but he is always on his phone and teams.
+He gets the orders sent to his phone usually but he can send it to us in any way
+Native Haze usually uses the order form and sometimes they send it via email Wed-Thur is the heaviest for orders (the day or the day after) as the menu gets sent out on Wed
+Other stores than Rise - he doesn’t mind us selecting SUBs and notating that to him
+
+Samples: sometimes he enters sample orders himself, for certain stores, they like to send out at least one jar of the 1/8oz as a shelf sample of new items
+Flinstone requires 3 samples since they are a huge store.
+Teams channel for any questions: HQ x GTI NY - Frankie
+There are five shipping locations: Hanrietta, Halfmoon, E. Syracuse, Manhattan (New York in LT), Long Beach - sometimes we receive rice only for 4 stores
+Nelson is primarily responsible for RISE orders, so we should direct any questions about pricing and related matters to him.
+Image 1. Menu format
+
+PRIORITY: We are usually instructed to prioritize orders based on dollar amount. Henrietta is typically the largest one.
+PRICING: We should follow the menu pricing. ALWAYS double-check which pricing we should use! LT has lower prices than the menu.
+BATCH: We should place the orders according to the batch numbers listed in column “B.” If a specific batch is not available, we should proceed based on FIFO. Always double-check that the batch corresponds to the correct product-sometimes the batch numbers are incorrect!
+CASE SIZE: We should always prioritize case-size products. If the request differs-e.g., the case size is 25 and they’re requesting 10 units-we should add 10 loose units to the order.
+If they request 30 units and the case size is 25, we should add 1 full case and 5 loose units.
+LESS AVAILABLE UNITS: We can add less available units and make a note - e.g., requested 30 units, but only 12 are available. Note examples: Less available item: 12/30 (product name)
+INVOICES: There’s no need to send invoices at the end, just the notes.
+
+BATTERIES: Batteries can go on the same invoice as other products
+https://app.avoma.com/meetings/50bbb942-3597-4a74-83de-7e09e7a898d5
+
+https://app.avoma.com/meetings/88d7c085-9606-4501-94a9-616151233b51
+The process starts when a Sales rep sends an order to the NY Headquarters email. This is a group email address that contains all HQ contractors working on the GTI Account.
+Menu in Excel format where the retailer has marked which products they want, how many cases & which TAC %. This is the best way to receive orders because it provides the exact Product Name, exact TAC % and case size as well as the Request Summary.
+Image 1. Email containing the menu order form
+NOTE: when the reps mention to prioritize orders by dollar amount, it means that we should place the branch with the highest $ total and go on to the lowest from there. This is only for stores with more than 2 locations.
+Image 2. Order format in menu order form
+Image 3. Order request summary
+In email order - Excel table or just a list.This way of receiving orders can be a little bit more complicated because the buyers do not name the products correctly a lot of the time, which results in a bit more time spent searching for the product in Leaf Trade.
+Image 4. Example of an email order
+2. Go to Leaf Trade, Sales-> Account -> GTI NY --> Orders
+4. Choose a Retailer from the Dropdown menu, the rep will indicate the Store name, location, and in most cases, if we are sending the order to their Recreational License or Medical License (if they have both), and click Create.
+Image 5. Retailer Dropdown in Leaf Trade
+5. Copy & Paste or type out the product name in the Search bar. If the product you’re adding to the order is a MIP, make sure the LAB RESULT D is filtered so the arrow is pointing UP (FIFO principle is applied here). Image 6. Product Search Bar
+Some items usually don’t come up in LeafTrade under the name that is listed in the Menu Order Form and that is because the name does not match what is the item under in the system. In this case, the &Shine items don’t show for NY as they use andShine name instead of the &Shine. So you would need to adjust that name in the search bar so it comes up.
+Image 7. Product name Search Bar
+Note: If some of the requested products are not available (either completely unavailable or the requested THC % is not available) leave a note with how many units they requested next to the name of the item and how much we have left in stock if any. DO NOT add to order as the sales reps would need to check which products the retailer want to use as substitutes. I.e: Rythm - Cereal Milk #1 - Live Rosin Vape Cartridge - .5g - requested 50
+6. Keep in mind that each product listed represents 1 Case so if you are supposed to add 2 cases of the same product you will have to type in 2 in the Quantity Section if the name contains something that indicates the case size: (a case of 25) this will add 2 of the same products to the order. However, if the retailer wants 30 and the case size is 20, you can add 1 of the 20, and then you will see another item name but without the case size - those are loose items - you can add 10 of the loose ones to match what the retailer requested.
+//**
+Image 8. Adding products to the order
+
+7. Once all the products are added, make sure you check the Pricing against the Menu order form or the latest Menu if the order was in mail, adjust the pricing if needed, and click Save.
+Note: Sometimes the promo pricing is not reflected in Leaf Trade so it has to be manually adjusted in the order. 8. Once the order is saved, you will end up on the Order Details Screen. In the Order Summary section, click View Draft - this will open the Draft Invoice. Image 9. Order Summary Screen
+9. Click on Download PDF - this will open a Print Screen, make sure you pick the Save as PDF option in the Destination, Click Save. Image 10. Draft Invoice Screen - Download PDF
+10. Add the store name as the extension of the Invoice number. Save the Draft invoice at a destination on your computer of your choosing.
+Image 11. Draft Invoice naming convention
+11. Go back to the email containing the order and REPLY ALL to the rep with the below text and the draft invoice attachment. “Hi {NAME},
+Order submitted in Revised Status, draft invoice attached.
+Please let us know if this is good to be approved.
+
+Always type out these changes in the email back to the rep, in the following format:
+Image 8. SUB Format
+Double-check the name of the product if you are using the batch number to search the product, when the batch is OOS, LeafTrade will give you results for other products.
+https://app.avoma.com/meetings/bfa308d9-3277-45dd-a813-41e3275f82c3
+
+Pricing - almost never will be discounted pricing given to Rise, except penny goods for testing and staff
+Since they don’t give discount and what we can do for Rise stores is to check if front pricing is correct
+They place the orders on Friday morning and are usually ready around 10-11am PST. The whole to do would be for Rise on Fridays.
+They will refresh the inventory for the internal buying on Friday.
+After the 5pm upload on Thursday for wholesale customers, no orders should get processed until the Rise orders are submitted.
+There should be 0 instances where what they are trying to order is not there.
+
+If something is by chance not available, don’t sub for anything except the exact same product but a different batch.
+Adjust the menu form to the quantity that was actually available.
+Adjust the order form to make sure the units that were added
+Go back to the orders and adjust pricing for tester products 0.01
+Create a group chat for Allocations - Josh, Andrew
+If they requested 25 units and all we have is 50, check in with Josh on the chat
+Where there are options to default to 50 case packs and they ordered 4x25 packs, we can replace them with 2x50 case packs.
+Attendees: Catie Lazic andrew.acevedo@gtigrows.com Brian Amend Patrick Hannigan
+
+Make sure to check the pricing. If there is anything in LT at $0, notify the team.
+Attendees: Catie Lazic Brian Amend Maggie Presley Patrick Hannigan
+Maggie will send to our team and to NVorder email so they can have visibility
+She gets orders all kind of ways - text, phone call, submitted on the order sheet
+She will submit them via email no matter how she received
+No special pricing normally, pricing is communicated through the pricing sheet, any special pricing will be communicated to us
+Two ways pricing will be changed - Master pricing sheet has frontline pricing, each one of the tabs has the same sheet but with special pricing for each customer. LT has pricing rules per customer which will cover 90% of special pricing customers
+PO orders can be confusing - because stores don’t know where products are coming from. Timing for the orders, paperwork by Wednesday, they pick up orders on Friday.
+
+Deep Roots - long lead time or steps that need to take place
+Ayr - they have a PO process that we have to abide by, takes all the order that they just order and matching and letting them know where the shortcomings are
+Thrive - they want their paperwork sooner that typical
+
+Planet 13 - large lead time, put the orders in and reserve inventory
+Ayr - they will send just generic product classes rather than the specific product, so send as many variations of the product as possible. Once the order is in Leaftrade we have to let them know how many units of something we had. We need to jot down what is missing and how many units we are actually sending to each location. Ayr requirements below:
+Manually punch DGF Production location Internal orders on Friday, search by LOT number.
+Tomorrow orders are good to be processed after noon PST.
+The process starts when a Sales rep sends an order to the NV Headquarters email. This is a group email address that contains all HQ contractors working on the GTI Account.
+When the order comes in, please send a Slack message to #gti-salesops slack channel if you are taking responsibility for the order submission.
+Menu in excel format where the retailer has marked which products they want, how many cases & which TAC %. This is the best way to receive orders because it provides the exact Product Name, exact TAC % and case size as well as the Request Summary.
+Image 1. Email containing the menu order form NOTE: always check the time of the order with the hold off on order entry especially for NV as we have times that we can place WS (wholesales) orders.
+Image 2. Order format in order enetry form
+In email order - Excel table or just a list.This way of receiving orders can be a little bit more complicated because the buyers do not name the products correctly a lot of the time, which results in a bit more time spent searching for the product in Leaf Trade.In this case for NV, the retailers usually ask for different strains from the same product. I.e (125 units of 3.5g Flower Rythm) this means we have to spread the 125 on different strains of the 3.5g Rythm flower.
+Image 4. Example of an In email order
+2. Go to Leaf Trade, Sales-> Account -> GTI NV --> Orders 3. Click New order
+4. Choose a Retailer from the Dropdown menu, the rep will indicate the Store name, location and in most cases if we are sending the order to their Recreational License or Medical License (if they have both) and click Create. NOTE: for NV, we have 3 different stock locations - CULT, PROD and CBX. Most of the time CULT has all flowers and some prerolls. PROD is for prerolls and some vapes. CBX is for vapes, edibles, tinctures and lotions.
+Image 5. Retailer Dropdown in Leaf Trade
+Image 6. Stock location drop down in LT.
+5. Copy & Paste the batch number into the batch or pull field as for NV we search for specific batches instead of names.
+Image 7. Batch or Pull number search field.
+Image 8. Batch or Pull number in the order menu.
+There are instances where a specific batch is OOS so you would have to delete the batch number from the search field and search by the item name.
+When you search by item name, some items usually don’t come up in LeafTrade under the name that is listed in the Menu Order Form and that is because the name does not match what is the item under in the system. In this case, the &Shine items doesn’t show for NY as they use andShine name instead of the &Shine. So you would need to adjust that name in the search bar so it comes up.
+Image 7. Product name Search Bar
+Note: If some of the requested products are not available (either completely unavailable or the requested THC % is not available) leave a note with how many units they requested next to the name of the item and how much we have left in stock if any. We can offer SUBs as long as they meet the following criteria: Same brand (if Rythm has to be Rythm), same species, same or similar THC %.
+We can always adjust on the items if the rep asks us to remove or change the subs so don’t be afraid about the SUBs you choose.
+6. Keep in mind that each product listed represents 1 Case so if you are supposed to add 2 cases of the same product you will have to type in 2 in the Quantity Section if the name contains something that indicates the case size: (a case of 25) this will add 2 of the same products to the order. However, if the retailer wants 30 and the case size is 20, you can add 1 of the 20, and then you will see another item name but without the case size - those are loose items - you can add 10 of the loose ones to match what the retailer requested.
+Image 8. Adding products to the order
+7. Once the order is saved, you will end up on the Order Details Screen. In the Order Summary section, click View Draft - this will open the Draft Invoice. Image 9. Order Summary Screen
+9. Click on Download PDF - this will open a Print Screen, make sure you pick the Save as PDF option in the Destination, Click Save.
+Image 10. Draft Invoice Screen - Download PDF 10. Add the store name as the extension of the Invoice number along with the stock location -. Save the Draft invoice at a destination on your computer of your choosing.
+I.e: Invoice #870675 Silver State Relief - Sparks CULT 1.8.25
+Image 11. Draft Invoice naming convention
+11. Go back to the email containing the order and REPLY ALL to the rep with the below text and the draft invoice attachment. “Hi {NAME},
+Order submitted in Revised Status, draft invoice attached.
+
+Please let us know if this is good to be approved.
+Batch split: We can make a batch split if that is the only option to fulfill the request, however, we need to make sure to follow FIFO and always take the oldest batch. Always make a note about it.
+Always type out these changes in the email back to the rep, in the following format:
+Image 12. SUB Format
+
+NV Lingo
+Image 13. Lingo NV RISE Batteries:
+Link for uploading Rise sheet - HQ Leaftrade Ordering - Order Template - All Documents
+Link to file for batch requests - https://docs.google.com/document/d/1lQ5bwM9eYYMuMk0Oa3XV16rthj_ARd0va2zLhlFXRRg/edit?tab=t.0
+Always use the filter in the order sheet regarding stock locations and units to get a better view of which items are in which stock location:
+STOCK LOCATIONS: Stores and products should be divided by stock location - CULT, CBX, and PROD. Items that belong to one stock location will not show up if you try searching for them in the other. For regular orders, we can pull this info from “Menu - Wholesale V2”, however for rise, Ernesto is usually preparing the sheet - process: https://vimeo.com/1086865872/18a3f5aa7c?utm_source=email&utm_medium=vimeo-email&utm_campaign=44349
+BATCH: We always use the batch provided in the menu. If it is OOS, we can sub the batch following FIFO. If the item is totally OOS, we make a note (We do not substitute with different flavours of the same item).
+PRICING: We follow LT pricing. There is no need to add notes if there’s a price discrepancy with the menu
+CASE SIZE: We always prioritize the largest available case size, starting with 50. If that's not available, we use 25, and if neither is available, we can use loose units.
+
+(e.g., for a request of 128 units, we would add 2 cases of 50, 1 case of 25, and 3 loose units)
+REQUESTED BATCH SIZE NOT AVAILABLE: If we don’t have loose units available to fulfill a request (e.g., they request 11 units but we only have cases), we need to add a request to open the batch in the shared file link (The file includes a note format example).
+Once the file is populated, we need to upload it to the drive so Valerie can create the batches - HQ Leaftrade Ordering - Order Template - All Documents (this is the case, only if we have many requests. If we have only 2,3 we can message her via teams)
+FORMAT FOR NOTES (please put Not available notes on top)
+
+No available item: 0/30 3.5g Afternoon Delight #4 (Hybrid) Rythm Flower
+Less available item: 30/60 Afternoon Delight #4 (Hybrid) Rythm Flower
+Batch SUB: Blue Dream Cartridge (NCD) 500mg - andShine (Hybrid), batch 0411 7409 2531 6188 not available sub with 7221 1359 3488 3442
+Rise Cookies - Should be placed under “Cookies on the strip - Las Vegas”
+
+https://app.avoma.com/meetings/5b1d1fa6-9541-4ab1-806c-762e60ce318b
+
+https://app.avoma.com/meetings/88d7c085-9606-4501-94a9-616151233b51
+Sample order entry process: https://app.avoma.com/meetings/ff3cbac5-b92b-4828-9b22-9f33b5777609
+The process starts when a Sales rep sends an order to the MA Headquarters email. This is a group email address that contains all HQ contractors working on the GTI Account.
+When the order comes in, please send a Slack message to #gti-salesops slack channel if you are taking responsibility for the order submission.
+Menu in excel format (divided by MIPs & Flower) where the retailer has marked which products they want, how many cases & which TAC %. This is the best way to receive orders because it provides the exact Product Name, exact TAC % and case size as well as the Request Summary.
+Image 1. Email containing the menu order form
+Image 2. Order format in menu order form
+Image 3. Order request summary
+In email order - Excel table or just a list.This way of receiving orders can be a little bit more complicated because the buyers do not name the products correctly a lot of the time, which results in a bit more time spent searching for the product in Leaf Trade.
+Image 4. Example of an In email order
+2. Go to Leaf Trade, Sales-> Account --> GTI MA -->Orders
+4. Choose a Retailer from the Dropdown menu, the rep will indicate the Store name, location and in most cases if we are sending the order to their Recreational License or Medical License (if they have both) and click Create.
+Image 5. Retailer Dropdown in Leaf Trade
+5. Copy & Paste or type out the product name in the Search bar. If the product you’re adding to the order is a MIP, make sure the LAB RESULT D is filtered so the arrow is pointing UP (Fifo principle is applied here).
+Image 6. Product Search Bar
+Note: If some of the requested products are not available (either completely unavailable or the requested THC % is not available) add substitutions to the order:
+L’Orange 3.5g flower (1 case requested) not available, add 1 case of substitution SATIVA (same strain as requested) with a similar THC%
+L’Orange 3.5g flower 38.2% THC (1 case requested) not available, add 1 case of substitution, same product, next highest THC% available
+Always type out these changes in the email back to the rep, in the following format:
+Image 7. SUB Format
+6. Keep in mind that each product listed represents 1 Case (case size is noted in the product name as well as in the Inventory Row), so if you are supposed to add 2 cases of the same product you will have to type in 1 in the Quantity Section on two product listings, this will add 2 of the same products to the order (each its own line item).
+Image 8. Adding products to the order
+Image 9. Multiple cases of the same product added to the order
+7. Once all the products are added, make sure you check the Pricing against the Menu order order form or the latest Menu if the order was in mail, adjust the pricing if needed and click Save.
+Note: Sometimes the promo pricing is not reflected in Leaf Trade so it has to be manually adjusted in the order.
+8. Once the order is saved, you will end up on the Order Details Screen. In the Order Summary section, click View Draft - this will open the Draft Invoice.
+Image 10. Order Summary Screen
+9. Click on Download PDF - this will open a Print Screen, make sure you pick the Save as PDF option in the Destination, Click Save.
+Image 11. Draft Invoice Screen - Download PDF
+10. Add the store name as the extension of the Invoice number. Save the Draft invoice at a destination on your computer of your choosing.
+Image 12. Draft Invoice naming convention
+11. Go back to the email containing the order and reply to the rep with the below text and the draft invoice attachment. “Hi {NAME},
+Order submitted in Revised Status, draft invoice attached.
+Please let us know if this is good to be approved.
+12. If the rep says the order is good to be approved, go back to Leaf Trade, open the order and update the order status to Approve. A confirmation pop-up will appear, confirming the Approval.
+Image 13. Order Status update to Approved
+13. If the rep requested a specific delivery date, you can note that in the Internal Order Notes
+Image 14. Delivery date notes - Internal Order Notes
+14. When saving the Draft invoice use the following format to name the file. Especially for Mark’s orders:
+M-D-Y [Account Name] Draft Invoice #XXXXXX Example: 4.9.24 Bask MED Draft Invoice #634595
+RSO - Rick Simpson Oil (full extract cannabis oil meant to be taken orally or applied topically)
+Deadline to place orders (to be delivered in 48hrs) is 2pm ET.
+
+Sample orders should always be created as a standalone order.
+All notes (requested delivery date that is outside of the schedule, sample notes etc) should be added to the Invoice Column
+If the order is in the Approved Status and the buyer would like to add to it, a new order with the add-ons should be created
+If the order is placed after 2pm and they still want the order delivered on schedule, the rep will always notify the packaging/delivery team about that before they send us the order (we should specify the delivery date in the Invoice Notes section)
+When the order is in the Revised Status, we can edit it as much as it’s needed as the packaging will not start until the order is Approved
+If we do not have inventory available for ordered products, we should let the rep know and offer substitute products (same strain or same product with different thc %)
+All orders placed should be left in the Revised Status, the rep should be notified that the order is in LeafTrade, draft invoice should be attached and we should wait for either the rep to give us the go-ahead or for them to Approve the order
+When submitting an order with MIP products, always filter the Lab Result Date to ensure FIFO (arrow pointing up)
+Heka - delivery should not be scheduled until they pay the invoice ahead of time (COD)
+Cape Ann - this account owes them over $10k and if they order, they need to pay double the invoice for the order to be delivered
+Zenleaf - special price account - we should input the order and the sales rep or Eric will update the pricing or give us exact pricing per product.
+Rythm - Flower, Live Resin Vape/Cartridge, Vape Pens, Concentrates
+Incredibles - Edibles (chocolate, gummies, sour candy, hard candy)
+Doctor Solomon’s - Topicals (lotions, balms, drops, RSO)
+Some accounts need special care after the order, this doesn’t fall under us
+Bask Fairhaven - typically send everything to their medical license
+UpTop West Roxbury is on leaftrade as Beacon Compassion
+Usually gets orders Monday and Tuesday (Tuesday can get quite busy with orders)
+Veralife - two locations, have to cc someone to organize the delivery
+He will let us know when an order can be approved immediately
+If the sub has a very low difference in thc percentage he will let the buyer know, put in the order and just let the client know about the change
+Some accounts send a table or type out what they want to order
+Mark will send a substitute email example - list the product they asked for and list the bus below with needed info (thc % differences etc)
+Reserve products that have limited quantity (subs) and keep it in the Revised Status until Approved
+Certain accounts have preferences regarding sending to specific licenses - medical (Uptop - Beacon Compassion).
+High Dose edibles to medical, everything else to other rec license
+Diam, Camp Fire Cannabis, Local Roots (both locations)
+Try Redi. Most orders go to Natick unless they specifically request it for Newton
+Tuesdays, Thursdays and Fridays are heavy order days
+MSO (all medical) - Cura Leaf, Ascend (Bottanist), Resonate (med license),Sunny Side Cresco
+She is still building her buyer cadence - BoTerra account (completely different way of submitting orders), Temescal - orders that will probably not be sent to us because it’s easier for her to submit for herself - Sky Cannabis, Clear Sky
+Brownie Scout is hot right now - reserving this strain for certain accounts will be a must
+Balagan - issue with them, they love high tech (anything that comes in with high thc he wants it), not knowing if new products with high % is coming in is a problem - they want to swap out the products they just ordered to be replaced with higher thc percentage product. Immediate attention, a bit difficult to work with.
+Calix Great Barrington - Donna wife is nice, sweet, Sean needs attention and he needs it now (will follow up a mill times in 15 mins), gets worked up when he can’t reach her, sometimes he snaps
+Canna Provisions - do a lot with them, they have special pricing, regardless of specials they will get $10 pens, $13.50 for 1g. Used to a ton of money with them but now barely anything. Account that possibly picks up orders soon (hopefully) - PAY CLOSE ATT, only accept the deliveries on Tuesday
+Cannabis Connection (Westwille, West Springfield) - different emails for different stores, it gets a little confusing because the emails are similar.
+Dazed - they order for Holiox sporadically, they opened another store and now they put orders on hold.
+Dreamer & Honey - orders a lot of gummies, also loves high %, any 7g high t he wants pulled immediately, he calls and keeps on the phone a long time.
+Barnsworth - nothing delivered that expires in 6 months (add to notes on every order)
+Ember - started buying a ton of gummies and fell off the face of the earth - may come back
+Kika - in Westfield (COD - wait for wire before approving orders), she likes the orders put in immediately.
+Insa - buyer is Out of state, buys for all of them at the same time ( a lot of stores), sends all orders in one email, special pricing but she puts pricing in the email. Springfield - for orders above 35k she needs approval, so sometimes she would send two orders to go around that.
+Silver therapeutics - they order a lot, a good account, love Browny Scout so she would send samples.
+
+Red Cardinal - only buys vapes (easy for subs as long as it’s the same strain)
+Monday, Tuesday heavy order day, Friday can be kind of heavy.
+License specific - if they have medical they will say what it’s for.
+If you see HIGH DOSE on the order, send it to med license
+If it’s a thc %, she will do the next highest, notify the rep
+Doesn’t like to swap out the whole strain on an order
+Ascend: They have three locations (Boston, New Bedford and Newton) and their orders all come in one file. One for MIPs and one for Flower. The Boston Store is also called Friend Street.
+Beacon Compassion - emails orders under battle-green or Terrasana
+
+Loom video for this Step - GTI MA | Menu Updates Part 1 - Prepare the Menu for new data
+
+We receive the data needed for menu updates from Eric Perez (Sales Director MA), he usually sends the report late evening the previous day.
+His email will sometimes include the Menu file as well, in case any formulas were changed. If he sends a Menu file, make sure you use that file for the new menu. If he doesn’t send a new Menu file, use the last menu you sent as your base.
+Click the Review Tab in Excel and navigate to Unprotect Sheet, click Unprotect Sheet
+
+Type in the password to unprotect the sheet, the password is always GTIMA (all caps lock)
+The first visible column in the menu is column C, click and drag to unhide column A & B
+Select data from in Column A from row 21 all the way down and delete it by pressing the Delete button on your keyboard
+Right click on the MA WHOLESALE MENU TAB and select Unhide
+Select all data from Column B to Column S, all the way down
+Loom video for this step - GTI MA | Menu Updates Part 2 - Cleaning up the data
+We are only working in the LeafTrade export tab for this step.
+Open the Inventory report from the email Eric sent
+Navigate to the LeafTrade Export tab in the Menu file
+Paste the Inventory data in Column B, Row 3. Make sure you Paste Values Only. You can either right click on the cell and select Paste Values Only or use your keyboard shortcut to that by clicking on the cell (Column B, Row 3) and pressing Ctrl+Shift+V at the same time.
+Once the data is pasted, click the Filter in Column S and deselect everything except 0 values. This will leave only products that have 0 available inventory.
+Select all Rows with 0 inventory, right click and select Delete Row
+Navigate back to the filter in the S column and select all values
+There are a couple of data points we need to fix in the inventory export before updating the menu:
+First check the data in Column D. There is one product that causes issues because of the naming convention and that is Dogwalkers - Show Dogs - 5pk (2.25g). The naming convention of this product causes and issue in the Dutchie Backend formula fields and it needs to be adjusted by simply deleting the weight of the product so you are left with Dogwalkers - Show Dogs - 5pk
+Next thing to check and make sure it is populated for all products is the Brand name in Column I. If the Brand name is blank, make sure you populate it (usually the same brand is either listed above or below so you can just drag the cell to auto populate the blank cell)
+Check the formatting in columns G and H, the formatting is usually off in the last couple of rows of the data - format those cells to date in m/d/yyyy format.
+Finally we need to make sure that the Expiration Date is populated for all products in Column P. If the expiration date is blank on some products, you should look at the Lab Result Date field (Column H) and add +1 year to that - so if the Lab Result Date is 9/23/2024 you would add 9/23/2025 to the Expiration Date cell.
+Find the row with RYTHM Batteries product and delete it - we do not include Batteries on the Menu.
+When all the data is adjusted, proceed to the next step.
+
+Loom video for this step - GTI MA | Menu Updates Part 3 - Updating the menu
+This step covers the actual Retailer facing menu update.
+Copy all data from Column A in the LeafTrade Export tab
+Paste the data to Column A, Row 21 in the MA WHOLESALE MENU Tab. Make sure you Paste Values Only. You can either right click on the cell and select Paste Values Only or use your keyboard shortcut to that by clicking on the cell (Column B, Row 3) and pressing Ctrl+Shift+V at the same time.
+Scroll through the menu to make sure no blank rows were added, if they exist, delete those rows.
+Click on any cell in the actual table containing the menu
+Navigate to the Data tab in Excel and click Remove Duplicates
+In the Duplicates pop-up deselect everything and only select Product Source.
+Click OK - this will merge duplicate products that have the same Batch number to a unified Inventory count for that product
+Highlight Columns A and B, right click on either column and select Hide
+
+Navigate to the Review Tab in Excel and select Protect Sheet
+Type in the password GTIMA - this time you will be prompted to do it twice. Once during the selection process for Protected cells and Columns and once to confirm. Type the same password in both cases.
+Navigate to the LeafTrade Export Tab and repeat this process
+Navigate to File, Save As and rename the Menu to GTI MENU “today’s date” (GTI MENU 10.16)
+Send the Menu via email to their team and MA Headquarters group.
+
+Always use the pricing assigned on the columns for pricing, avoid using the total pricing.
+When sending back notes about SUBs, if we have prerolls and flowers: include the THCA % of each item and which % we SUB with
+MED Dose items usually have the word Medical dose on the left-hand side in the menu, but always note:
+MED dose can only be gummies and chocolate bars from Incredibles (the brand) and they are always above 300mg; anything that is 300mg and less is NOT MED item.
+We place batteries on the same order as other products.
+
+"I saw that some items are not in the menu but when I manually search them up in LeafTrade, they appear."
+"This is because our menu is from yesterday and they might have added new items to their inventory and when I update the menu tomorrow it will show there"
+Since we update their menus on Monday, Wednesday and Friday - Tuesday and Thursday are not always 100% accurate in regards to items and stock as most of the stock is either allocated, gone OR they have updated the inventory - so we either don't see certain items or we do see new ones that we don't have on the menu
+If an order is received within 5 minutes before the shift ends and takes approximately 10-15 minutes to finalize, please proceed with processing it before logging off.
+If the order is expected to take 30 minutes or more, it can be held for processing the next business day.
+These situations are handled on a case-by-case basis. Please use your judgment and communicate with the team if unsure.
+If an order is held for the next day, send an email to the client informing them that it will be processed in the morning.
+Please inform the team via Slack about what is pending for tomorrow.
+We are confirming that the order has been received. Due to the time required to process it thoroughly, we’ll be handling it first thing tomorrow morning and will send a confirmation once it’s finalized.
+The person closing the day should post a message in the Teams channel with a summary of the order status.
+A list of pending orders for the next day, along with a note that we’ll follow up on them first thing in the morning, or:
+A simple message stating: "Good evening team. There are no pending orders on our end from today"
+When listing pending orders, please be specific - include the retailer name and state (e.g., “Sweetspot - NJ”).
+Please continue to respond to order emails using the template message, indicating that we will follow up in the morning.
+All unresolved inbox in Hiver (all conversations that are not closed should be there-please review to ensure no orders were missed)
+If there are any pending orders, please advise our team by sending a message in the #GTI-Pending Slack channel. Please use the following notes format:
+We need to send a list of orders in the revised status from LT (we simply open the NY state, filter the orders, and mark the ones that are not approved for more than 48h)
+Image - List of orders in revised status not approved for more than 24h
+In rare cases, we may have pending orders (e.g., waiting for a response from the sales rep regarding details such as product type, license type, pricing, etc.).
+If we are waiting for a response, please mark the email in Hiver with "Waiting for client’s reply." If we don’t receive a response within 2-3 hours, we can follow up via email. If there is still no response by EOD, teammates who are closing the day and sending the list of revised orders, should include a note about the pending orders in the following format:
+The person starting the morning shift should send the message to the teams channel:
+If orders are carried over from the previous evening, post an update such as:
+“We’re working on Sweetspot - NJ and will proceed with new orders following FIFO."
+If new orders arrived overnight, post a message like:
+“We received 3 new orders overnight: Ascend - IL, Verilife - MD, and A21 - NJ. We're starting with those and will follow up on upcoming orders following FIFO”
+If there are no new orders, you may follow the current practice and post:
+“Good morning team, nothing is pending on our end from yesterday.We will process any orders received since in FIFO order.”
+If any orders are in pending status (i.e., the email is marked in Hiver and the info has been shared in Slack), a follow-up should be done in the morning.
+First, check whether the order has already been placed by the retailer.
+If the order has not been placed: Follow up via email or Teams, depending on the previous communication channel.
+
