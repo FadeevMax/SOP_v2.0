@@ -14,7 +14,9 @@ import io # Needed for handling the in-memory file download
 import requests
 import base64
 import unicodedata
-from utils.config import GDOC_STATE_PATH, GOOGLE_DOC_NAME, CACHE_DIR, PDF_CACHE_PATH, DOCX_LOCAL_PATH, IMAGE_DIR, IMAGE_MAP_PATH, ENRICHED_CHUNKS_PATH, GITHUB_REPO, GITHUB_TOKEN
+from utils.config import (
+    GDOC_STATE_PATH, GOOGLE_DOC_NAME, CACHE_DIR, PDF_CACHE_PATH, DOCX_LOCAL_PATH, IMAGE_DIR, IMAGE_MAP_PATH, ENRICHED_CHUNKS_PATH, SOP_CHUNKS_PATH, GITHUB_REPO, GITHUB_TOKEN
+)
 import re
 from docx import Document
 from docx.oxml.table import CT_Tbl
@@ -201,12 +203,96 @@ def force_resync_to_github():
              update_pdf_on_github(PDF_CACHE_PATH)
         st.write("✅ Document files uploaded.")
 
+        # Step 5: Generate and upload enriched chunk files
+        st.write("Generating enriched text chunks from local DOCX...")
+        generate_enriched_chunks(DOCX_LOCAL_PATH)
+        st.write("Uploading chunk files to GitHub...")
+        # Upload enriched_chunks.json
+        if os.path.exists(ENRICHED_CHUNKS_PATH):
+            upload_file_to_github(
+                local_path=ENRICHED_CHUNKS_PATH,
+                github_path="enriched_chunks.json",
+                commit_message="Manual Re-sync: Update enriched_chunks.json"
+            )
+        # Upload sop_chunks.txt
+        if os.path.exists(SOP_CHUNKS_PATH):
+            upload_file_to_github(
+                local_path=SOP_CHUNKS_PATH,
+                github_path="sop_chunks.txt",
+                commit_message="Manual Re-sync: Update sop_chunks.txt"
+            )
+        st.write("✅ Chunk files uploaded.")
         return True
 
     except Exception as e:
         st.error(f"An error occurred during the re-sync process: {e}")
         return False
-        
+
+def generate_enriched_chunks(docx_path):
+    """
+    Parse the DOCX to create enriched text chunks (with image labels) and save to JSON and text files.
+    """
+    os.makedirs(os.path.dirname(ENRICHED_CHUNKS_PATH), exist_ok=True)
+    from docx import Document
+    doc = Document(docx_path)
+    items = []
+    body = doc.element.body
+    for child in body.iterchildren():
+        if isinstance(child, CT_P):
+            para = Paragraph(child, doc)
+            for run in para.runs:
+                if 'graphic' in run._element.xml:
+                    for drawing in run._element.findall(".//w:drawing", namespaces=run._element.nsmap):
+                        for blip in drawing.findall(".//a:blip", namespaces=run._element.nsmap):
+                            rel_id = blip.get(qn('r:embed'))
+                            if rel_id and rel_id in doc.part.related_parts:
+                                image_part = doc.part.related_parts[rel_id]
+                                items.append(('image', image_part))
+            if para.text.strip():
+                items.append(('text', para.text.strip()))
+        elif isinstance(child, CT_Tbl):
+            table = Table(child, doc)
+            for row in table.rows:
+                for cell in row.cells:
+                    for para in cell.paragraphs:
+                        for run in para.runs:
+                            if 'graphic' in run._element.xml:
+                                for drawing in run._element.findall(".//w:drawing", namespaces=run._element.nsmap):
+                                    for blip in drawing.findall(".//a:blip", namespaces=run._element.nsmap):
+                                        rel_id = blip.get(qn('r:embed'))
+                                        if rel_id and rel_id in doc.part.related_parts:
+                                            image_part = doc.part.related_parts[rel_id]
+                                            items.append(('image', image_part))
+                        if para.text.strip():
+                            items.append(('text', para.text.strip()))
+    enriched_chunks = []
+    image_counter = 1
+    i = 0
+    while i < len(items):
+        item_type, content = items[i]
+        if item_type == 'image':
+            label = None
+            for j in range(i+1, min(i+3, len(items))):
+                if items[j][0] == 'text':
+                    potential_label = extract_label(items[j][1])
+                    if potential_label:
+                        label = potential_label
+                        break
+            if not label:
+                label = f"Image {image_counter}"
+            if not (label and ':' in label and i+1 < len(items) and items[i+1][0]=='text' and extract_label(items[i+1][1]) is not None):
+                enriched_chunks.append(label)
+            image_counter += 1
+        elif item_type == 'text':
+            text_content = content.strip()
+            if text_content:
+                enriched_chunks.append(text_content)
+        i += 1
+    with open(ENRICHED_CHUNKS_PATH, "w") as jf:
+        json.dump(enriched_chunks, jf, indent=2)
+    with open(SOP_CHUNKS_PATH, "w") as tf:
+        tf.write("\n\n".join(enriched_chunks))
+
 def get_creds():
     """Get credentials from Streamlit secrets or local JSON file."""
     try:
@@ -343,6 +429,11 @@ def sync_gdoc_to_github(force=False):
     # Extract labeled images from DOCX
     extract_images_and_labels_from_docx(DOCX_LOCAL_PATH, IMAGE_DIR, IMAGE_MAP_PATH, debug=True)
 
+    # Generate enriched chunks (text + image labels) and save to files
+    st.write("Generating enriched text chunks...")
+    generate_enriched_chunks(DOCX_LOCAL_PATH)
+    st.write("✅ Enriched chunks generated.")
+
     # Update map.json on GitHub
     success = update_json_on_github(
        IMAGE_MAP_PATH,
@@ -390,6 +481,16 @@ def sync_gdoc_to_github(force=False):
         )
     else:
         st.warning(f"enriched_chunks.json not found at {ENRICHED_CHUNKS_PATH}, skipping upload.")
+
+    # Upload sop_chunks.txt if it exists
+    if os.path.exists(SOP_CHUNKS_PATH):
+        upload_file_to_github(
+            local_path=SOP_CHUNKS_PATH,
+            github_path="sop_chunks.txt",
+            commit_message="Update SOP chunks text"
+        )
+    else:
+        st.warning(f"sop_chunks.txt not found at {SOP_CHUNKS_PATH}, skipping upload.")
 
     if pdf_uploaded and docx_uploaded:
         st.success("PDF and DOCX updated on GitHub with the latest from Google Doc!")
