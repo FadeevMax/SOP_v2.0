@@ -583,7 +583,14 @@ def run_main_app():
                    st.warning("SOP document not found. Please go to the Settings page to sync it from Google Docs.")
                    st.stop()
                
-               st.session_state.file_path = DOCX_LOCAL_PATH # Use DOCX for vectorizing
+               # In the assistant setup, use chunked text if available
+               chunked_path = os.path.join(CACHE_DIR, "sop_chunks.txt")
+               if os.path.exists(chunked_path):
+                   st.session_state.file_path = chunked_path
+                   st.write("Using chunked SOP text for vector store indexing.")
+               else:
+                   st.session_state.file_path = DOCX_LOCAL_PATH
+
                with st.spinner("Setting up the AI assistant with the latest SOP document..."):
                    client = OpenAI(api_key=st.session_state.api_key)
                    
