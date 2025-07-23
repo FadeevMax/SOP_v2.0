@@ -9,22 +9,6 @@ from docx import Document
 from datetime import datetime
 from typing import List, Dict, Any
 
-GitHub_API = "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"
-openai_key = "REMOVED_SECRET"
-
-[gcp_service_account]
-type = "service_account"
-project_id = "tribal-contact-465208-q3"
-private_key_id = "27cc570ccecd77f28da23033dd026e331ffbe4e7" # <-- Replace with your NEW key ID
-private_key = """-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCoE/lv90MTbRAw\nIG1LSnmugcQKScLTLvnMSPSEmWsQLqLlw2lwSvv+cYuALeRQ8UTRf+jOLMBXU2kl\nj4Qv/Z8Tn22PSOSx4/tym/r/BqRu9zsnCvCkZQNmtzcMP08rajv1VzJyir9gv+9G\naWnvm97BlBFOxMF/8Gb6QmQuinPQYxoJyIg6uTEQanZ1shts4C7la7Qh6ptQm6vm\nZJBhtQniQBRgh+hnIveb3NyDgosE2Kas6R0QD35/wYUM5bKrxt7YrsWl3zOSw2eb\ngugz90LZ5udcoAVLuCORsQ8V+UEU0utMNXuL8TB+VNOaseiQFvQtIvZpSmEBVBEa\nVeo2cKcJAgMBAAECggEAKu7jPfb+osUup+R4lo1hFLLgBTK/OdubglO2ZfKcdwc6\npA8s7TqyMNYHKMhQNF7U0eDm8ldbEFNlnesRfIK/8i68uSeJB2mxbp6qWB91vESZ\nzwjL3GpTGpc9T/sR+YiK5UoPQFPxu8B7WdSOc16w4Wi1nRXESa56V33DAmJqX/Wu\neX9MsDpNzfciopjzg801f5RCYVNScgYOGKHTnYjtjSawZFbd3BKwFOFmkh7Z7+jx\nSheXuNdzvRSAiRBZr23QYppzcOtkxamvQTt/BbJOWCVYFiV/UJEYoS+X0l/Ysrga\nRtBIqrjF1gtG3a2gWDBbCOf1iak3y9Jh5KXP2fh9MwKBgQDZE4Ofek0lhIQnDn26\naYEIUU+RluK53RkVHOcPs8VZcRptgSRPG0E7ObHHFmnObEcm5L6YCQQCRho6Oqno\n5CFDlCw/kWp1Wk1Lw6Nffp/aSfTBNY3BKVKoYFYPRou24G7ITdBQ9PTrENz5ayTH\nzVbPBe8okf7BZ70mkZNXPYTVywKBgQDGN0mjqSuYbBmu1qslAKN6xAJKqTjlVnpO\ncbbAyWSTAsWENGMZSS6VsWm8n6tXuWkKWiXT5+4bjA1X5xoA+RY2wL0vJTn8vfiX\nWENbo57Or0jUYpRzIGES9NscKaBubtNvDREyZ29h/RtKJhADl/Wz7N7Bzd0jNk85\nB2ZUzB/7+wKBgQDAG7v9lA/YJxmJMxLjuWEfCk6fqufF0zzSaXy3ccIycJ0R0htf\nAuDM2DdT2KsUqtChRAjEph3tITsu0yHxYItrsiMisr+DUcJcTaw04+v2FENOBeYI\nz1g+eNtQs38L/j0seWjlbJOfwJG/DipDxJ6Rok/QGLxbT0Kfcm/x4hi/1wKBgDfK\n8ihmAsZpjyUeeZf1wQ5aQ8beMQyktdKEwYssZOnYet5GnKpOZhVulbOpQeJ0ZvOq\nAkHOY8BPQKZAf5pMgosw30947ASPOHzpNDSELrxArIBTqzNopspeL5qSwPy0p0D3\n7aJBaSGsy9SoOBO630cg4mas2pUBwXTs90nhFxOnAoGBAIZblnJye8BWaEjzZLCk\ngGvy9jDH99qipECqcLxb2IVUiA5tZEHCGA1P/6t9A7KFDRfu8xf6jFTPMCdH+nQN\nWiySNDWMWoZldUZ8fDKQmaRNx7b97MQhjyNYk+xI0s04JeLpgJ7dYMkSgN1ch/rA\nFLXtqGotP4dsROXZeJiWa1Hu\n-----END PRIVATE KEY-----\n""" # <-- Replace with your NEW key
-client_email = "sheets-access-bot@tribal-contact-465208-q3.iam.gserviceaccount.com" # <-- Replace with your NEW email
-client_id = "108950941929980320908"
-auth_uri = "https://accounts.google.com/o/oauth2/auth"
-token_uri = "https://oauth2.googleapis.com/token"
-auth_provider_x509_cert_url = "https://www.googleapis.com/oauth2/v1/certs"
-client_x509_cert_url = "https://www.googleapis.com/robot/v1/metadata/x509/sheets-access-bot%40tribal-contact-465208-q3.iam.gserviceaccount.com" # <-- Replace with your NEW URL
-universe_domain = "googleapis.com"
-
 
 
 
