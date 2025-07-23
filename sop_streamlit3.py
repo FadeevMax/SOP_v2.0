@@ -178,6 +178,10 @@ def get_or_create_vector_store(client):
 
 # --- Daily Refresh Routine ---
 def refresh_knowledge_base():
+        # Check if API key is available
+    if not hasattr(st.session_state, 'api_key') or not st.session_state.api_key:
+        print("API key not available. Skipping knowledge base refresh.")
+        return
     client = OpenAI(api_key=st.session_state.api_key)
     vector_store = get_or_create_vector_store(client)
     # 1. Download the latest document from GitHub
@@ -376,7 +380,8 @@ def update_pdf_on_github(local_pdf_path):
 def initialize_session_state():
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
-
+    if "api_key" not in st.session_state:  # Add this line
+        st.session_state.api_key = None
     if st.session_state.authenticated and "state_loaded" not in st.session_state:
         if load_app_state(st.session_state.user_id):
             st.session_state.state_loaded = True
