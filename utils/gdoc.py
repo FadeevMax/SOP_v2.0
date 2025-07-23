@@ -23,6 +23,8 @@ from docx.table import Table
 from docx.text.paragraph import Paragraph
 from docx.oxml.ns import qn
 from utils.github import update_pdf_on_github, update_docx_on_github, update_json_on_github, upload_file_to_github
+import numpy as np
+from sentence_transformers import SentenceTransformer
 
 caption_pattern = re.compile(r"^Image\s+(\d+):?\s*(.*)", re.IGNORECASE)
 
@@ -170,6 +172,27 @@ def force_resync_to_github():
                 commit_message=f"Manual Re-sync: Update {file}"
             )
         st.write("✅ Images uploaded.")
+
+        # Step 3.5: Generate enriched content chunks and upload
+        st.write("Generating semantic content chunks...")
+        chunks = semantic_chunking_docx(DOCX_LOCAL_PATH)
+        enriched_chunks = enrich_chunks_with_images_semantic(chunks, IMAGE_MAP_PATH)
+        with open(ENRICHED_CHUNKS_PATH, "w") as f:
+            json.dump(enriched_chunks, f, indent=2)
+        # Also write the combined chunk text file
+        chunk_text_path = os.path.join(CACHE_DIR, "sop_chunks.txt")
+        with open(chunk_text_path, "w") as f:
+            for chunk in enriched_chunks:
+                f.write(chunk["chunk_text"] + "\n\n")
+        st.write("✅ Enriched chunks file created.")
+        # Upload enriched_chunks.json to GitHub
+        st.write("Uploading enriched_chunks.json to GitHub...")
+        upload_file_to_github(
+            local_path=ENRICHED_CHUNKS_PATH,
+            github_path="enriched_chunks.json",
+            commit_message="Manual Re-sync: Update enriched_chunks.json"
+        )
+        st.write("✅ enriched_chunks.json uploaded.")
 
         # Step 4: Upload the DOCX and PDF files
         st.write("Uploading DOCX and PDF to GitHub...")
@@ -341,6 +364,20 @@ def sync_gdoc_to_github(force=False):
           f"Update {file} from SOP DOCX"
           )
 
+    # Generate semantic chunks from the DOCX and save to cache
+    st.info("Generating semantic chunks of the SOP content...")
+    chunks = semantic_chunking_docx(DOCX_LOCAL_PATH)
+    enriched_chunks = enrich_chunks_with_images_semantic(chunks, IMAGE_MAP_PATH)
+    # Save enriched chunks JSON
+    with open(ENRICHED_CHUNKS_PATH, "w") as f:
+        json.dump(enriched_chunks, f, indent=2)
+    # Save combined chunk text to a .txt file for vector store use
+    chunk_text_path = os.path.join(CACHE_DIR, "sop_chunks.txt")
+    with open(chunk_text_path, "w") as f:
+        for chunk in enriched_chunks:
+            f.write(chunk["chunk_text"] + "\n\n")
+    st.success(f"✅ Split SOP into {len(enriched_chunks)} enriched chunks.")
+
     # Upload PDF and DOCX to GitHub
     pdf_uploaded = update_pdf_on_github(PDF_CACHE_PATH)
     docx_uploaded = update_docx_on_github(DOCX_LOCAL_PATH)
@@ -367,3 +404,135 @@ def sync_gdoc_to_github(force=False):
     else:
         st.error("Failed to update both PDF and DOCX on GitHub.")
         return False
+
+# --- Semantic Chunking Utilities ---
+def semantic_chunking_docx(docx_path, model_name='all-MiniLM-L6-v2', buffer_size=1, percentile=90, min_chunk_size=50):
+    """
+    Semantic chunking of DOCX content with image association.
+    Image captions are always grouped with the text above.
+    """
+    doc = Document(docx_path)
+    model = SentenceTransformer(model_name)
+
+    # Extract all content paragraphs with metadata
+    content_items = []
+    prev_text_idx = None
+    for para in doc.paragraphs:
+        text = clean_caption(para.text.strip())
+        if not text:
+            continue
+        is_caption = bool(caption_pattern.match(text))
+        if is_caption and prev_text_idx is not None:
+            # If this paragraph is an image caption, append it to the previous text chunk
+            content_items[prev_text_idx]['text'] += f"\n{text}"
+            content_items[prev_text_idx]['is_caption'] = True
+            continue
+        else:
+            content_items.append({
+                'text': text,
+                'is_caption': is_caption,
+                'paragraph_index': len(content_items)
+            })
+            prev_text_idx = len(content_items) - 1
+
+    # Filter out very short items (unless they contain a caption)
+    sentences = []
+    for i, item in enumerate(content_items):
+        if len(item['text']) >= min_chunk_size or item['is_caption']:
+            sentences.append({
+                'sentence': item['text'],
+                'is_caption': item['is_caption'],
+                'original_index': i
+            })
+    if not sentences:
+        return []
+
+    # Create contextual buffer for each sentence (previous and next sentence context)
+    for i in range(len(sentences)):
+        context = []
+        for j in range(i - buffer_size, i + buffer_size + 1):
+            if 0 <= j < len(sentences):
+                context.append(sentences[j]['sentence'])
+        sentences[i]['combined'] = ' '.join(context)
+
+    # Generate embeddings for each combined context
+    embeddings = model.encode([s['combined'] for s in sentences], convert_to_numpy=True)
+    for i, emb in enumerate(embeddings):
+        sentences[i]['embedding'] = emb
+
+    # Compute cosine distance between consecutive sentence embeddings
+    distances = []
+    for i in range(len(sentences) - 1):
+        a, b = sentences[i]['embedding'], sentences[i+1]['embedding']
+        dist = 1 - (np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+        distances.append(dist)
+        sentences[i]['distance_to_next'] = dist
+
+    # Determine cut points where distance exceeds the percentile threshold
+    threshold = np.percentile(distances, percentile) if distances else float('inf')
+    breakpoints = [i for i, d in enumerate(distances) if d > threshold]
+
+    # Assemble chunks based on breakpoints
+    chunks = []
+    start_idx = 0
+    for bp in breakpoints:
+        end_idx = bp + 1
+        chunk_sentences = sentences[start_idx:end_idx]
+        if chunk_sentences:
+            chunks.append(chunk_sentences)
+        start_idx = end_idx
+    if start_idx < len(sentences):
+        chunks.append(sentences[start_idx:])
+
+    # If no semantic breaks found, fall back to fixed-size chunking (to avoid one huge chunk)
+    if not chunks and sentences:
+        chunk_size = max(3, len(sentences) // 5)  # aim for ~5 chunks if possible
+        chunks = [sentences[i:i + chunk_size] for i in range(0, len(sentences), chunk_size)]
+
+    return chunks
+
+def enrich_chunks_with_images_semantic(chunks, image_map_path):
+    """
+    Attach image labels/files to each chunk based on references in the text.
+    Only includes images that have labels present in the chunk text.
+    """
+    try:
+        with open(image_map_path, "r") as f:
+            image_map = json.load(f)
+    except FileNotFoundError:
+        image_map = {}
+
+    def extract_image_numbers(text):
+        patterns = [r"Image\s+(\d+)", r"Figure\s+(\d+)"]
+        nums = []
+        for pattern in patterns:
+            nums.extend(re.findall(pattern, text, flags=re.IGNORECASE))
+        return {int(n) for n in nums}
+
+    def find_image_by_number(img_num):
+        for label, filename in image_map.items():
+            # If the label starts with "Image X" matching the number, return it
+            if label.lower().startswith(f"image {img_num}"):
+                return label, filename
+        return None, None
+
+    enriched = []
+    used_labels = set()
+    for idx, chunk in enumerate(chunks):
+        # Combine sentences back into a chunk of text
+        chunk_text = "\n".join([s['sentence'] for s in chunk])
+        image_numbers = extract_image_numbers(chunk_text)
+        images = []
+        for num in image_numbers:
+            label, fname = find_image_by_number(num)
+            if label and label in image_map:
+                images.append({"label": label, "file": fname})
+                used_labels.add(label)
+        enriched.append({
+            "chunk_id": idx,
+            "chunk_text": chunk_text,
+            "sentence_count": len(chunk),
+            "image_files": images,
+            "has_images": len(images) > 0
+        })
+    return enriched
