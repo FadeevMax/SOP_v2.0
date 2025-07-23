@@ -670,7 +670,6 @@ def run_main_app():
                        thread_id=st.session_state.thread_id,
                        assistant_id=st.session_state.assistant_id
                    )
-
                if run.status == 'completed':
                     messages = client.beta.threads.messages.list(thread_id=st.session_state.thread_id, order="desc", limit=1)
                     assistant_reply = messages.data[0].content[0].text.value
@@ -688,7 +687,7 @@ def run_main_app():
                     # Now it's safe to rerun since the message is saved
                     st.rerun()
                 
-                else:
+               else:
                     st.error(f"❌ The run failed with status: {run.status}")
 
            except Exception as e:
