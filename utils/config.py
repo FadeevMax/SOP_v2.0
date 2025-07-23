@@ -11,6 +11,7 @@ PDF_CACHE_PATH = os.path.join(CACHE_DIR, "cached_sop.pdf")
 DOCX_LOCAL_PATH = os.path.join(CACHE_DIR, "sop.docx")
 GDOC_STATE_PATH = os.path.join(CACHE_DIR, "gdoc_state.json")
 ENRICHED_CHUNKS_PATH = os.path.join(CACHE_DIR, "enriched_chunks.json")
+SOP_CHUNKS_PATH = os.path.join(CACHE_DIR, "sop_chunks.txt")
 IMAGE_MAP_PATH = os.path.join(CACHE_DIR, "image_map.json")
 
 # === GitHub ===
