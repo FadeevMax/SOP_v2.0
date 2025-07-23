@@ -674,11 +674,20 @@ def run_main_app():
                    messages = client.beta.threads.messages.list(thread_id=st.session_state.thread_id, order="desc", limit=1)
                    assistant_reply = messages.data[0].content[0].text.value
                    formatted_answer = insert_image_links(assistant_reply)
-                   st.markdown(formatted_answer)
-                   st.rerun()
-
-               else:
-                   st.error(f"❌ The run failed with status: {run.status}")
+                    
+                    # Add the assistant's reply to session state BEFORE rerunning
+                   st.session_state.messages.append({"role": "assistant", "content": formatted_answer})
+                    
+                    # Display the response in a chat message
+                   with st.chat_message("assistant"):
+                       st.markdown(formatted_answer)
+                        # Show images if available
+                       maybe_show_referenced_images(formatted_answer, img_map, GITHUB_REPO)
+                    
+                    # Now it's safe to rerun since the message is saved
+                    st.rerun()
+                else:
+                    st.error(f"❌ The run failed with status: {run.status}")
 
            except Exception as e:
                st.error(f"❌ An error occurred while processing your request: {str(e)}")
