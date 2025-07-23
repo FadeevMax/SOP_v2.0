@@ -247,6 +247,63 @@ def initialize_session_state():
     if "instruction_edit_mode" not in st.session_state:
         st.session_state.instruction_edit_mode = "view"
 
+def ensure_documents_ready():
+    """
+    Ensures all required documents and files are available before the app starts.
+    Returns True if everything is ready, False otherwise.
+    """
+    import os
+    import json
+    import streamlit as st
+    from utils.config import DOCX_LOCAL_PATH, IMAGE_MAP_PATH, ENRICHED_CHUNKS_PATH, PDF_CACHE_PATH
+    from utils.gdoc import sync_gdoc_to_github
+    from new_functions import load_or_generate_enriched_chunks
+
+    # Create necessary directories
+    os.makedirs(os.path.dirname(ENRICHED_CHUNKS_PATH), exist_ok=True)
+    os.makedirs(os.path.dirname(PDF_CACHE_PATH), exist_ok=True)
+
+    # Check if enriched chunks already exist
+    if os.path.exists(ENRICHED_CHUNKS_PATH):
+        return True
+
+    # Try to ensure DOCX file exists
+    if not os.path.exists(DOCX_LOCAL_PATH):
+        st.info("📥 Document not found locally. Attempting to sync from Google Doc...")
+        try:
+            success = sync_gdoc_to_github(force=True)
+            if not success or not os.path.exists(DOCX_LOCAL_PATH):
+                st.error("❌ Could not retrieve document from Google Doc. Please check your configuration.")
+                return False
+        except Exception as e:
+            st.error(f"❌ Error syncing document: {str(e)}")
+            return False
+
+    # Try to ensure image map exists
+    if not os.path.exists(IMAGE_MAP_PATH):
+        st.warning("⚠️ Image map not found. Creating empty map...")
+        os.makedirs(os.path.dirname(IMAGE_MAP_PATH), exist_ok=True)
+        with open(IMAGE_MAP_PATH, 'w') as f:
+            json.dump({}, f)
+
+    # Generate enriched chunks
+    try:
+        with st.spinner("🔄 Processing document for AI assistant..."):
+            load_or_generate_enriched_chunks(
+                docx_path=DOCX_LOCAL_PATH,
+                image_map_path=IMAGE_MAP_PATH,
+                enriched_chunks_path=ENRICHED_CHUNKS_PATH,
+                force_regenerate=True
+            )
+        st.success("✅ Document processing complete!")
+        return True
+    except Exception as e:
+        st.error(f"❌ Error processing document: {str(e)}")
+        # Create empty enriched chunks as fallback
+        with open(ENRICHED_CHUNKS_PATH, 'w') as f:
+            json.dump([], f)
+        return False
+
 # ======================================================================
 # --- Main Application Function ---
 # ======================================================================
@@ -537,16 +594,6 @@ st.session_state.user_id = user_id
 
 initialize_session_state()
 
-# Ensure enriched_chunks.json exists at startup
-if not os.path.exists(ENRICHED_CHUNKS_PATH):
-    # Use the new semantic chunking pipeline
-    load_or_generate_enriched_chunks(
-        docx_path=DOCX_LOCAL_PATH,
-        image_map_path=IMAGE_MAP_PATH,
-        enriched_chunks_path=ENRICHED_CHUNKS_PATH,
-        force_regenerate=True
-    )
-
 if not st.session_state.get("authenticated", False):
     st.title("🔐 GTI SOP Sales Coordinator Login")
     pwd = st.text_input("Enter password or full API key:", type="password")
@@ -570,4 +617,14 @@ if not st.session_state.get("authenticated", False):
             st.error("❌ Incorrect password or API key.")
     st.stop()
 else:
-    run_main_app()
+    # Ensure documents are ready after authentication
+    if "documents_ready" not in st.session_state:
+        st.session_state.documents_ready = ensure_documents_ready()
+    
+    if st.session_state.documents_ready:
+        run_main_app()
+    else:
+        st.error("❌ Could not initialize document processing. Please contact your administrator.")
+        if st.button("🔄 Retry Initialization"):
+            st.session_state.documents_ready = ensure_documents_ready()
+            st.rerun()
