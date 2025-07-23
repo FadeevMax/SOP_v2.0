@@ -15,7 +15,7 @@ SOP_CHUNKS_PATH = os.path.join(CACHE_DIR, "sop_chunks.txt")
 IMAGE_MAP_PATH = os.path.join(CACHE_DIR, "image_map.json")
 
 # === GitHub ===
-GITHUB_REPO = "FadeevMax/SOP_sales_chatbot"
+GITHUB_REPO = "FadeevMax/SOP_v2.0"
 GITHUB_PDF_NAME = "Live_GTI_SOP.pdf"
 GITHUB_TOKEN = st.secrets["GitHub_API"]
 
