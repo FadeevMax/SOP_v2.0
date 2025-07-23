@@ -149,6 +149,7 @@ from utils.config import (
     IMAGE_DIR,
     IMAGE_MAP_PATH,
     ENRICHED_CHUNKS_PATH,
+    SOP_CHUNKS_PATH
 )
 
 VECTOR_STORE_NAME = "KnowledgeBaseStore"
@@ -583,11 +584,9 @@ def run_main_app():
                    st.warning("SOP document not found. Please go to the Settings page to sync it from Google Docs.")
                    st.stop()
                
-               # In the assistant setup, use chunked text if available
-               chunked_path = os.path.join(CACHE_DIR, "sop_chunks.txt")
-               if os.path.exists(chunked_path):
-                   st.session_state.file_path = chunked_path
-                   st.write("Using chunked SOP text for vector store indexing.")
+               # In the assistant setup, use the enriched text file for vector store if available, otherwise fall back to DOCX
+               if os.path.exists(SOP_CHUNKS_PATH):
+                   st.session_state.file_path = SOP_CHUNKS_PATH
                else:
                    st.session_state.file_path = DOCX_LOCAL_PATH
 
